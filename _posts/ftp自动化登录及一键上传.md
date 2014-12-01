@@ -1,0 +1,70 @@
+# ftp自动化登录及一键上传
+2014-10-23
+
+吐槽: 最近注册了一个空间，需要通过ftp来管理空间文件，命令行用惯了，不想用FileZilla类似的界面软件，于是就想用ftp命令直接操作，网上啪啪搜了一堆ftp命令使用教程，用起来还算简单，可发现老断，经常需要重新登录，够烦的，有时紧紧只想上传一个文件，却把大部分时间花在登录输密码上，想想应该有自动化的方法，于是开启了折腾ftp自动化的旅途.
+
+##自动化登录
+首先，肯定是登录，能够把登录自动化，那得提高多少效率啊！！！！
+
+网上找了下发现ftp默认会加载~/.netrc配置文件，当然也可以通过-N来指定netrc路径，下面简单介绍netrc的设置内容:
+
+
+* default login \<loginname> password \<password> ;设置默认登录用户及密码
+* runique ;防止同名覆盖
+* macdef ;宏定义，以空行结束，若名称为init则会自动执行
+
+下面是我的netrc文件:
+<pre style="background:#000000"><font color="#aaaaaa">
+default login xxxxxxxx password xxxxxxxxx
+macdef init
+cd htdocs/res
+
+</font></pre>
+利用上述脚本，我就可以轻松登录ftp，并进入htdocs文件夹.
+
+##一键上传
+对于ftp的上传，主要是利用了put命令，当过程太麻烦了，首先需要登录，cd到某个文件夹，之后put，一大串的操作，是否有办法批处理化呢，答案是肯定了.
+
+结合管道+自动化登录就可以实现了，例如我要上次当前目前下到hello.txt到ftp服务器上，我只有执行如下命令:
+<pre style="background:#000000"><font color="#aaaaaa">
+xuwenfadeMacBook-Pro-2:~ wenva$ echo 'put hello.txt'|ftp ftp.freekj.cn
+Connected to ftp.freekj.cn.
+220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 302 of 1900 allowed.
+220-Local time is now 15:32. Server port: 21.
+220-This is a private system - No anonymous login
+220 You will be disconnected after 60 seconds of inactivity.
+331 User bynkj_1 OK. Password required
+230 OK. Current restricted directory is /
+Remote system type is UNIX.
+Using binary mode to transfer files.
+cd htdocs/res
+250 OK. Current directory is /htdocs/res
+local: hello.txt remote: hello.txt
+229 Extended Passive mode OK (|||8378|)
+150 Accepted data connection
+     0        0.00 KiB/s 
+226 File successfully transferred
+221-Goodbye. You uploaded 0 and downloaded 0 kbytes.
+221 Logout.
+</font></pre>
+
+上述虽然可以一次性执行，但输入那么一大串字符，够累的，于是得继续优化，通过脚本fput来实现参数的传递
+<pre style="background:#000000"><font color="#aaaaaa">
+echo "put $1"|ftp ftp.freekj.cn
+</font></pre>
+
+之后通过.bash_profile来alias一个fput命令，如下
+<pre style="background:#000000"><font color="#aaaaaa">
+alias fput='~/xtool/fput.sh' 
+</font></pre>
+
+有了上面的命令，我只要执行```fput filename```就可以实现文件的一键上传.
+
+综述，有了上述的基础，就可以实现一键删除、一键创建目录等，还可以批处理.
+
+
+
+
+
+
