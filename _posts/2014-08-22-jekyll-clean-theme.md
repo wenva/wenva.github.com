@@ -1,9 +1,15 @@
-Jekyll Clean
-============
+---
+layout: post
+title: "Jekyll Clean Theme"
+date: 2014-08-22 16:25:06 -0700
+comments: false
+---
 
 * Get it from [github](https://github.com/scotte/jekyll-clean).
 * See the [live demo](https://scotte.github.io/jekyll-clean).
 * See it [in action on my own blog](https://scotte.github.io).
+
+Welcome to the sample post for the Jekyll Clean theme.
 
 A simple and clean Jekyll theme using [bootstrap](http://getbootstrap.com)
 (not to be confused with jekyll-bootstrap) that's easy to modify and very
@@ -45,7 +51,6 @@ You can setup an upstream tracking repository like so:
 ```
 $ git remote add upstream git@github.com:scotte/jekyll-clean.git
 ```
-
 And now when you wish to merge your own branch onto the latest version of the
 theme, simply do:
 
@@ -64,7 +69,7 @@ License
 =======
 
 The content of this theme is distributed and licensed under a
-![License Badge](/images/cc_by_88x31.png)
+![License Badge]({{ site.baseurl}}/images/cc_by_88x31.png)
 [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/legalcode)
 
     This license lets others distribute, remix, tweak, and build upon your work,
