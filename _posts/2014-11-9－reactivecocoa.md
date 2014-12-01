@@ -2,7 +2,7 @@
 layout: post
 title: "ReactiveCocoa解析"
 date: 2014-11-9
-comments: true
+comments: false
 ---
 
 # ReactiveCocoa 解析

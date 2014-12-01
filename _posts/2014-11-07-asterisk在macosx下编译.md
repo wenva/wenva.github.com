@@ -2,7 +2,7 @@
 layout: post
 title: "Asterisk 技术点"
 date: 2014-11-07
-comments: true
+comments: false
 ---
 # Asterisk 技术点
 

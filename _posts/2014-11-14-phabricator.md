@@ -2,7 +2,7 @@
 layout: post
 title: "Phabricator"
 date: 2014-11-14
-comments: true
+comments: false
 ---
 # Phabricator
 

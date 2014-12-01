@@ -2,7 +2,7 @@
 layout: post
 title: "Linphone-IOS源码编译"
 date: 2014-11-20
-comments: true
+comments: false
 ---
 # Linphone-IOS源码编译
 2014-11-20
