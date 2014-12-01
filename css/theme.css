@@ -53,14 +53,22 @@ body {
 .navbar-inverse {
     background-color: #F5F5F5;
     border-color: #BBB;
+    background-image: url('../images/darkheader.png');
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #777;
+    color: #AAA;
     background-color:#F5F5F5;
+    background-image: url('../images/darkheader.png');
 }
 
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-    color: #000;
+    color: #FFF;
+}
+
+.navbar-header .navbar-brand {
+    font-family: "Playball",cursive;
+    font-size: 20px;
+    color: #AAA;
 }
 
