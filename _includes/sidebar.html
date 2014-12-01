@@ -6,7 +6,7 @@
 -->
 
 <div class="sidebar well">
-    <h1>Recent Posts</h1>
+    <h1>最近</h1>
     <ul>
         {% for post in site.posts limit:10 %}
           <li><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
