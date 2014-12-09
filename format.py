@@ -60,7 +60,7 @@ for file in filelist:
                 filefd.close()
 
                 filefd=open(filename, 'w')
-                formatstring='---\nlayout:post\ntitle:'+'"'+title+'"\ndate:'+datestring+'\ncomments:false\n---\n'
+                formatstring='---\nlayout: post\ntitle: '+'"'+title+'"\ndate: '+datestring+'\ncomments: false\n---\n'
                 filefd.writelines(formatstring)
                 filefd.writelines(lines)
                 filefd.close()
