@@ -10,3 +10,5 @@ January 25, 2015
 ![image](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Art/RecipesAppElementTreeScreen01.jpg)
 
 intellicommunity
+
+eVideo.$(PRODUCT_NAME:rfc1034identifier)
