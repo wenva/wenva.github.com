@@ -110,4 +110,20 @@ February 5, 2015
 </pre>
 
 ### 5. 接听
-当有来电后，会调用LinphoneManager的onCall:StateChanged:withMessage接口，
+* 弹出IncomingCallViewController
+	<pre>
+linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] -> [PhoneMainView callUpdate]->[PhoneMainView displayIncomingCall] -> IncomingCallViewController
+</pre>
+
+* 点击接听
+	<pre>
+	onAcceptClick -> [PhoneMainView incomingCallAccepted] -> acceptCall->linphone_core_accept_call_with_params
+</pre>
+	
+### 6. 呼出
+* 呼出
+	<pre>
+	DialerViewController ->[UICallButton touchUp:]-> [LinphoneManager call:displayName:transfer:] -> linphone_core_invite_address_with_params
+	</pre>
+
+
