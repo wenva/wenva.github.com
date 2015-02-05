@@ -1,4 +1,11 @@
+---
+layout: post
+title: "牛逼的ImageMagick"
+date: 2015-02-05
+comments: false
+---
 # 牛逼的ImageMagick
+February 5, 2015
 
 ImageMagick[1] 是一个免费的创建、编辑、合成图片的软件。可用于格式转换、变换、透明度设置、特效....; 可支持的格式多达89种。
 
