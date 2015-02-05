@@ -126,4 +126,16 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 	DialerViewController ->[UICallButton touchUp:]-> [LinphoneManager call:displayName:transfer:] -> linphone_core_invite_address_with_params
 	</pre>
 
+### 7. 摄像头设备
+* 前置后置
+	<pre>
+	linphone_core_get_video_devices 获取所有设备号
+	linphone_core_set_video_device 设置设备号
+	linphone_core_get_video_device 获取当前设备号
+</pre>
 
+### 8. 摄像头视频显示
+* 设置view
+	<pre>
+	linphone_core_set_native_preview_window_id(lc, view);
+</pre>
