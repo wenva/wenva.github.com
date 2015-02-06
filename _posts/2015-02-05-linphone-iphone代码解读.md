@@ -139,3 +139,25 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 	<pre>
 	linphone_core_set_native_preview_window_id(lc, view);
 </pre>
+
+* mediastreamer2/src/videofilters/ioscapture.m
+	<pre>
+ 	MSFilterDesc ms_ioscapture_desc = {
+ 	.id=MS_V4L_ID,
+  	.name="MSioscapture",
+  	.text="A video for IOS compatible source filter to stream pictures.",
+  	.ninputs=0,
+    .noutputs=1,
+    .category=MS_FILTER_OTHER,
+    .init=ioscapture_init,
+    .preprocess=ioscapture_preprocess,
+    .process=ioscapture_process,
+    .postprocess=ioscapture_postprocess,
+    .uninit=ioscapture_uninit,
+    .methods=methods
+    }; 
+</pre>
+	startLibLinphone -> ms_init -> ms_voip_init -> ms_factory_init_voip -> ms_web_cam_manager_register_desc -> ms_v4ios_cam_desc.detect -> ms_v4ios_detect
+	<pre>
+	
+</pre>
