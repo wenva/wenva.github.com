@@ -135,12 +135,37 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 </pre>
 
 ### 8. 摄像头视频显示
-* 设置view
+* 摄像头模块初始化
 	<pre>
-	linphone_core_set_native_preview_window_id(lc, view);
+	MSWebCamDesc ms_v4ios_cam_desc = {
+	"AV Capture",
+	&ms_v4ios_detect,
+	&ms_v4ios_cam_init,
+	&ms_v4ios_create_reader,
+	NULL
+	};
 </pre>
-
-* mediastreamer2/src/videofilters/ioscapture.m
+	startLibLinphone -> ms_init -> ms_voip_init -> ms_factory_init_voip -> ms_web_cam_manager_register_desc(ms_web_cam_desc[i]) -> cam_detect -> ms_v4ios_cam_desc.detect -> ms_v4ios_detect
+	<pre>
+	 NSArray * array = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+	 for(i = 0 ; i < [array count]; i++)
+	 {
+		AVCaptureDevice * device = [array objectAtIndex:i];
+	 	MSWebCam *cam=ms_web_cam_new(&ms_v4ios_cam_desc);
+	 	cam->name= ms_strdup([[device modelID] UTF8String]);
+	 	cam->data = ms_strdup([[device uniqueID] UTF8String]);
+	 	ms_web_cam_manager_add_cam(obj,cam);
+	 }                                                                                   
+</pre>
+	PS:ms_v4ios_cam_desc位于ms_web_cam_descs数组中, MSWebCamManager负责管理所有摄像头
+	<pre>
+	struct _MSWebCamManager{
+		 MSList *cams;
+	     MSList *descs;
+	 };
+</pre>
+	
+* IOSCapture初始化，设置OUTPUT Capture
 	<pre>
  	MSFilterDesc ms_ioscapture_desc = {
  	.id=MS_V4L_ID,
@@ -157,7 +182,9 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
     .methods=methods
     }; 
 </pre>
-	startLibLinphone -> ms_init -> ms_voip_init -> ms_factory_init_voip -> ms_web_cam_manager_register_desc -> ms_v4ios_cam_desc.detect -> ms_v4ios_detect
-	<pre>
+	ms_v4ios_create_reader -> ms_filter_new_from_desc(&ms_ioscapture_desc) -> ms_filter_new_from_desc -> ms_factory_create_filter_from_desc -> ms_ioscapture_desc.init -> ioscapture_init -> [IOSCapture initWithFrame:] -> initIOSCapture 
 	
-</pre>
+* 视频显示(YUV420)
+	linphone_core_iterate -> toggle_video_preview -> video_preview_start -> ms_web_cam_create_reader -> ms_v4ios_cam_desc.create_reader -> ms_v4ios_create_reader -> openDevice -> 初始化AVCaptureSession，最后通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
+	
+	ioscapture_preprocess -> start -> 
