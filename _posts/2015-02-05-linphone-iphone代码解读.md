@@ -194,5 +194,5 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 * 视频显示
 通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
 
-### 9. 对方声音 -> 我方
-### 10. 
+### 9. 接收声音
+### 10. 发送声音
