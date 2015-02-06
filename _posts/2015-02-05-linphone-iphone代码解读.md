@@ -184,7 +184,15 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 </pre>
 	ms_v4ios_create_reader -> ms_filter_new_from_desc(&ms_ioscapture_desc) -> ms_filter_new_from_desc -> ms_factory_create_filter_from_desc -> ms_ioscapture_desc.init -> ioscapture_init -> [IOSCapture initWithFrame:] -> initIOSCapture 
 	
-* 视频显示(YUV420)
-	linphone_core_iterate -> toggle_video_preview -> video_preview_start -> ms_web_cam_create_reader -> ms_v4ios_cam_desc.create_reader -> ms_v4ios_create_reader -> openDevice -> 初始化AVCaptureSession，最后通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
+* 启动摄像头
+	linphone_core_iterate -> toggle_video_preview -> video_preview_start -> ms_web_cam_create_reader -> ms_v4ios_cam_desc.create_reader -> ms_v4ios_create_reader -> openDevice -> 初始化AVCaptureSession
+
+* 开始抓拍
+	video_stream_payload_type_changed(videostream.c) -> mediastream_payload_type_changed(mediastream.c) -> media_stream_change_decoder -> ms_filter_preprocess -> ioscapture_preprocess -> start -> [AVCaptureSession startRunning]
+	PS: 当payload_type发生改变时就会触发video_stream_payload_type_changed（video_stream_start初始化）
 	
-	ioscapture_preprocess -> start -> 
+* 视频显示
+通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
+
+### 9. 对方声音 -> 我方
+### 10. 
