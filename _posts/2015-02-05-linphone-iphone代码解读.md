@@ -194,5 +194,6 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 * 视频显示
 通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
 
-### 9. 接收声音
+### 9. 声音
+startLibLinphone -> ms_init -> ms_voip_init -> ms_factory_init_voip -> ms_snd_card_manager_register_desc -> card_detect -> au_detect -> ms_snd_card_new_with_name -> au_init
 ### 10. 发送声音
