@@ -41,8 +41,8 @@ for file in filelist:
             filefd=open(filename, 'rb')
             title=filefd.readline()[0:-1]
             datestring=filefd.readline()[0:-1]
+            categories=filefd.readline()[0:-1]
             filefd.close()
-            print datestring
             if (title!='---' and datestring!=''):
                 title=title[1:].strip(' ')
                 try:
@@ -51,7 +51,6 @@ for file in filelist:
                     datetime=datetime.datetime.strptime(datestring, '%B %d, %Y')
 
                 datestring=datetime.strftime('%Y-%m-%d')
-                print datestring
                 newname=basepath+'/'+datestring+'-'+title+'.md'
 
                 # read and write
@@ -60,9 +59,9 @@ for file in filelist:
                 filefd.close()
 
                 filefd=open(filename, 'w')
-                formatstring='---\nlayout: post\ntitle: '+'"'+title+'"\ndate: '+datestring+'\ncomments: false\n---\n'
+                formatstring='---\nlayout: post\ntitle: '+'"'+title+'"\ndate: '+datestring+'\ncomments: false\ncategories: '+categories+'\n---\n'
                 filefd.writelines(formatstring)
-                filefd.writelines(lines)
+                filefd.writelines(lines[3:])
                 filefd.close()
 
                 # rename
@@ -70,6 +69,4 @@ for file in filelist:
 
                 print newname
                 print formatstring
-
-
 
