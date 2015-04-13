@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "linphone资料整理"
+title: "MacOSX下编译linphone"
 date: 2015-02-02
 comments: false
 categories: iOS
