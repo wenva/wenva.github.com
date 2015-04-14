@@ -32,7 +32,7 @@ Protocol)，其是在实时传输协议(Real-time Transport Protocol)基础上�
 	下载jar文件，并拷贝到/usr/share/java目录下
 	sudo cp antlr-3.4-complete.jar /usr/share/java/antlr.jar
 	</pre>
-	** <font color=d80000>注意:必须是3.4，否则可能会报_empty不存在 </font> **
+	** 注意:必须是3.4，否则可能会报_empty不存在 **
 
 
 ## Build 问题汇总
@@ -367,3 +367,4 @@ char *sal_address_as_string_uri_only(const SalAddress *addr){
 }
 </pre>
  
+此问题已解决，详情猛戳[这里](http://wenva.github.io/ios/2015/04/08/%E7%BA%BF%E7%A8%8B%E5%B1%80%E9%83%A8%E5%AD%98%E5%82%A8.html)
