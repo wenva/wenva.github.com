@@ -28,12 +28,12 @@ Valid Architectures好比“现实”，可是我只能当程序猿（因为其�
 </pre>
 
 ## 3. 错误分析
-看来上面的阐述，就能很容易地知道下面错误的原因:
+看了上面的阐述，就能很容易地知道下面错误的原因:
 <pre>
 Check dependencies
 No architectures to compile for (ARCHS=armv7s, VALID_ARCHS=arm64).
 </pre>
-上述错误可以典型的认为是“想一出，做一出”，你说能不出错嘛！！！！！请不要问我如何解决^_^
+上述错误可以典型的认为是“想一出，做一出”，你说能不出错嘛！！！！！关于此问题，请不要问我如何解决(就是如此任性^_^)
 
 ## 4. 综述
 通过上面的描述，我想大家应该很清楚了“Architectures”与“Valid Architectures”的关系，于是这里有一个公式：
