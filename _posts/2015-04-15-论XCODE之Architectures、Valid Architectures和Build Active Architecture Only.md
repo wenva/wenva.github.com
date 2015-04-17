@@ -10,13 +10,13 @@ categories: iOS
 
 ## 1. 解释
 
-######  Build Active Architecture Only
+###  Build Active Architecture Only
  这个比较简单，是指只编译当前激活的CPU架构（即当前调试的设备）
 
-######  Architectures	 - 想
+###  Architectures	 - 想
  Architectures是指你的product想编译的CPU架构
 
-######  Valid Architectures - 能
+###  Valid Architectures - 能
 Valid Architectures是指你能编译的CPU架构
 
 ## 2. 举例 - “理想很丰满，现实很骨感”
