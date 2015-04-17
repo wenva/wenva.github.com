@@ -198,7 +198,7 @@ Connecting to www.webrtc.org|74.125.23.121|:80...
 ##### 分析
 链接不存在
 ##### 处理
-到www.ilbcfreeware.org下载extract-cfile.txt，拷贝到上传到可用的服务器，这里我上传到github，地址https://github.com/wenva/wenva.github.com/raw/master/resource/extract-cfile.awk
+到www.ilbcfreeware.org下载extract-cfile.txt，拷贝到上传到可用的服务器，这里我上传到github，地址http://7ximmr.com1.z0.glb.clouddn.com/extract-cfile.awk
 编辑submodules/libilbc-rfc3951/downloads/Makefile.am
 <pre>
 extract_script = extract-cfile.awk

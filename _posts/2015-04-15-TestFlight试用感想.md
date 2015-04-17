@@ -42,4 +42,4 @@ The iTunes Store team
 进入“我的App”，点击“预发行”，可以看到你用Application Loader上传的应用，点击“内部测试员”，勾选测试员，之后回到“构建版本”，打开“TestFlight Beta 测试”开关.
 * 下载应用
 测试员会收到测试邀请信，“TestFlight: You're invited to test xxx”，点击“Open in TestFlight”，系统会自动跳转到TestFlight，此时测试者就可以看到相应的APP。（请用iOS设备邮箱打开邮件，否则怎么跳转）
-![image](https://github.com/wenva/wenva.github.com/raw/master/resource/TestFlight Invite.png)
+![image](http://7ximmr.com1.z0.glb.clouddn.com/TestFlight Invite.png)
