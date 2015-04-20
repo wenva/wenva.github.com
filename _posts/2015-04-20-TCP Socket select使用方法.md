@@ -3,7 +3,7 @@ layout: post
 title: "TCP Socket select使用方法"
 date: 2015-04-20
 comments: false
-categories: 嵌入式
+categories: Linux
 ---
 ![image](http://www-01.ibm.com/support/knowledgecenter/api/content/nl/zh-cn/ssw_ibm_i_53/rzab6/rzab6508.gif)
 
