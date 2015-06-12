@@ -16,6 +16,16 @@ export DYLD_LIBRARY_PATH=.:$DYLD_LIBRARY_PATH
 </pre>
 执行上述命令后，可以在当前路径下生成screenshot-xxx.tiff
 
+### 编译libimobiledevice
+<pre>
+sudo brew install usbmuxd
+git clone https://github.com/libimobiledevice/libimobiledevice
+cd libimobiledevice
+./autogen.sh
+make
+make install
+</pre>
+
 #### 展望
 我稍微查看了下抓拍的原理，是往usb发送相应的指令，并接收图片数据. 后续会继续了解libimobiledevice相关的代码.
 
