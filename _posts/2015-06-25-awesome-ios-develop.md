@@ -13,7 +13,9 @@ categories: ios
 	* 类成员变量使用_开头
 	* 类名、协议名首字母大写	
 	* 更多详情参考[苹果规范](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.pdf)
-
+	
+* 采用git来做版本管理
+* gitignore必不可少，否则会多出很多冲突
 * 善用Github，如follow、starred、fork
 
 * 善用Code Snippet
