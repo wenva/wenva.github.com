@@ -27,7 +27,7 @@ StarnetdeMacBook-Pro:EVideoSpecs starnet$ tree
 7 directories, 5 files
 
 </pre>
-Repo结构如上，说明下大致以上
+Repo结构如上，大致说明下
 
 * CocoaPods-version.yml - CocoaPods版本信息，可以到CocoaPods的官方[Repo](https://github.com/CocoaPods/Specs)拷贝
 * Specs - 存放第三方库的.podspec，可以先为空，后续再添加
@@ -73,5 +73,7 @@ source 您的私有Repo地址  # 我的: source 'http://192.168.61.223/xuwf/evid
 
 pod '您的第三方库'
 </pre>
+重点说明下，必须添加source，否则`pod install`会默认去Clone CocoaPods的官方Repo到本地，这得卡好久好久，因此强烈建议加上
 
 ### 7. pod install/update
+后续的操作，大家应该都比较清晰，这里不做阐述.
