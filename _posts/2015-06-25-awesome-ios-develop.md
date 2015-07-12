@@ -35,4 +35,5 @@ categories: ios
 * 真机调试，Certificates、Identifiers、Provisioning Profile必不可少
 * 使用TestFlight进行内部分发，支持20个内部账号和1000个外部账号
 * 使用iTunes Connect来管理和发布APP
-* 
+* 利用xcode查看UIImage对象的图
+![image](http://7ximmr.com1.z0.glb.clouddn.com/xcode_debug_show_uiimage.jpg)
