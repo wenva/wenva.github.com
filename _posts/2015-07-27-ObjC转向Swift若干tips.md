@@ -22,3 +22,4 @@ categories:
 	* func xxxx(xxx ...) -> 返回类型
 	 
 * println 带换行的print
+* as 类型转换 “当作”
