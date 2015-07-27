@@ -6,8 +6,8 @@ comments: false
 categories: 
 ---
 * 不分头文件和实现文件，而是集合到.swift文件
-* let 定义常量； len pi = 3.14
 * 类型对象化（类似于java） Int、Float、Double、Bool、Character
+* let 定义常量； len pi = 3.14
 * var hello :NSString ?
 	* var 定义变量`var hello :NSString = @"1212"`
 	* : 指定变量类型
