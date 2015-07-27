@@ -61,3 +61,4 @@ struct objc_object {
 };
 </pre>
 
+![image](http://7ximmr.com1.z0.glb.clouddn.com/objc_runtime_1.jpg)
