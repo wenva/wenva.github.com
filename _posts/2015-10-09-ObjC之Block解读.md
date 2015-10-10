@@ -16,8 +16,7 @@ categories: ios
 void (^block)(int a, int b) = ^(int a, int b){
 	//此处不能对除了形参，不能对使用外部变量
 	int c = a+b;
-};
-</pre>
+};</pre>
 * NSStackBlock
 	* 位于栈内存
 	* 在函数中直接通过^{}定义的
@@ -25,21 +24,20 @@ void (^block)(int a, int b) = ^(int a, int b){
 	<pre>
 	NSLog(@"block = %@", ^{
 		//此处不管是否对外部变量，都是NSStackBlock
-	})
-</pre>
+	})</pre>
 * NSMallocBlock
 	* 位于堆内存
 	* 引用外部变量
 	* ARC模式下会将block从栈拷贝到堆上，而MRC中需要使用copy
-<pre>
+	<pre>
 	int c;
 void (^block)(int a, int b) = ^(int a, int b){
 	//此处引用了外部变量c
 	int d = c+a+b;
-};
-</pre>
+};</pre>
 
 ### 2 外部变量(针对NSStackBlock、NSMallocBlock)
+
 #### 2.1 外部基础类型变量
 <pre>
 @interface TestViewController () {
@@ -107,8 +105,7 @@ int g_count = 100; //全局变量
     self.block = ^{
     	//此处对成员变量_testObject1进行了引用，会导致对self进行了retain(参考2.2)
         NSLog(@"block ==========%@", _testObject1);
-    };
-</pre>
+    };</pre>
 
 	* 解决方法
 	<pre>
@@ -116,6 +113,5 @@ int g_count = 100; //全局变量
 	//__unsafe_unretained typeof(self) weakSelf = self;
     self.block = ^{
         NSLog(@"block ==========%@", weakSelf.testObject1);
-    };
-</pre>
+    };</pre>
 	
