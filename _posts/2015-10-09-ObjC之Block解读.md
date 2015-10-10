@@ -86,6 +86,7 @@ int g_count = 100; //全局变量
 * static变量、全局变量，block不对其进行copy
 
 #### 2.2 外部对象类型变量
+
 ##### MRC模式下
 * 全局对象、静态对象，在block copy，不会进行retain
 * 成员变量，在block copy 不会对成员变量进行retain，`但是会对self进行retain`
@@ -102,7 +103,7 @@ int g_count = 100; //全局变量
 	* 此处解决方法有
 		* (1) self.block = nil
 		* (2) 使用weak或者__unsafe_unretained
-<pre>
+	<pre>
 	//如下代码将会导致循环引用
     self.block = ^{
     	//此处对成员变量_testObject1进行了引用，会导致对self进行了retain(参考2.2)
@@ -111,7 +112,7 @@ int g_count = 100; //全局变量
 </pre>
 
 PS: 解决方法
-<pre>
+	<pre>
 	__weak typeof(self) weakSelf = self;
 	//__unsafe_unretained typeof(self) weakSelf = self;
     self.block = ^{
