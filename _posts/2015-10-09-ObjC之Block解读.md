@@ -97,21 +97,20 @@ int g_count = 100; //全局变量
 
 ### 3. 注意事项
 * 循环引用
-	* 此处解决方法有
-		* (1) self.block = nil
-		* (2) 使用weak或者__unsafe_unretained
-	<pre>
+ 	<pre>
 	//如下代码将会导致循环引用
     self.block = ^{
     	//此处对成员变量_testObject1进行了引用，会导致对self进行了retain(参考2.2)
         NSLog(@"block ==========%@", _testObject1);
     };</pre>
 
-	* 解决方法
-	<pre>
-	__weak typeof(self) weakSelf = self;
-	//__unsafe_unretained typeof(self) weakSelf = self;
-    self.block = ^{
-        NSLog(@"block ==========%@", weakSelf.testObject1);
-    };</pre>
+	* 此处解决方法有
+		* (1) self.block = nil
+		* (2) 使用weak或者__unsafe_unretained
+		<pre>
+		__weak typeof(self) weakSelf = self;
+		//__unsafe_unretained typeof(self) weakSelf = self;
+	    self.block = ^{
+	        NSLog(@"block ==========%@", weakSelf.testObject1);
+	    };</pre>
 	
