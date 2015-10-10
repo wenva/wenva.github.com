@@ -12,7 +12,7 @@ categories: ios
 * NSGlobalBlock
 	* 位于text段
 	* 不引用外部变量
-<pre>
+	<pre>
 void (^block)(int a, int b) = ^(int a, int b){
 	//此处不能对除了形参，不能对使用外部变量
 	int c = a+b;
@@ -22,7 +22,7 @@ void (^block)(int a, int b) = ^(int a, int b){
 	* 位于栈内存
 	* 在函数中直接通过^{}定义的
 	* 不管block是否使用外部变量，都是NSStackBlock
-<pre>
+	<pre>
 	NSLog(@"block = %@", ^{
 		//此处不管是否对外部变量，都是NSStackBlock
 	})
@@ -42,7 +42,6 @@ void (^block)(int a, int b) = ^(int a, int b){
 ### 2 外部变量(针对NSStackBlock、NSMallocBlock)
 #### 2.1 外部基础类型变量
 <pre>
-
 @interface TestViewController () {
     int _count; //成员变量
 }
@@ -111,7 +110,7 @@ int g_count = 100; //全局变量
     };
 </pre>
 
-PS: 解决方法
+	* 解决方法
 	<pre>
 	__weak typeof(self) weakSelf = self;
 	//__unsafe_unretained typeof(self) weakSelf = self;
