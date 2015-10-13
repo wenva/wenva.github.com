@@ -11,7 +11,7 @@ categories: ios
 
 * NSGlobalBlock
 	* 位于text段
-	* 不引用外部变量
+	* 不引用外部成员变量或局部变量（引用全局或静态也是NSGlobalBlock）
 	<pre>
 void (^block)(int a, int b) = ^(int a, int b){
 	//此处不能对除了形参，不能对使用外部变量
@@ -96,6 +96,10 @@ int g_count = 100; //全局变量
 * 成员变量，在block copy 不会对成员变量进行retain，`但是会对self进行retain`
 
 ### 3. 注意事项
+* 与其他objc对象不同，block默认是在栈上分配的，因此需要注意copy
+<pre>
+“As an optimization, block storage starts out on the stack—just like blocks themselves do.”
+</pre>
 * 循环引用
  	<pre>
 	//如下代码将会导致循环引用
