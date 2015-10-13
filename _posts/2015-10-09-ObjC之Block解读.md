@@ -97,9 +97,14 @@ int g_count = 100; //全局变量
 
 ### 3. 注意事项
 * 与其他objc对象不同，block默认是在栈上分配的，因此需要注意copy
-<pre>
-“As an optimization, block storage starts out on the stack—just like blocks themselves do.”
-</pre>
+	<pre>
+	“As an optimization, block storage starts out on the stack—just like blocks 	themselves do.”</pre>
+* NSSet和NSArray 初始化(arrayWithObjects, initWithObjects)只对第一个block进行copy(验证了下字典对象是ok的)
+	<pre>
+    [NSMutableArray arrayWithObjects:
+            ^{ NSLog(@"this is block 1:%i", num); }, //NSMallocBlock
+            ^{ NSLog(@"this is block 1:%i", num); }, //NSStackBlock
+            nil];</pre>
 * 循环引用
  	<pre>
 	//如下代码将会导致循环引用
