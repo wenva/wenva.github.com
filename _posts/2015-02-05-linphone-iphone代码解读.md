@@ -28,6 +28,7 @@ theLinphoneCore = linphone_core_new_with_config (&linphonec_vtable
 							 ,configDb
 							 ,self /* user_data */);</pre>
 linphonec_vtable为所有回调接口(见LinphoneManager.m)
+
 <pre>
 static LinphoneCoreVTable linphonec_vtable = {
 .show =NULL,
@@ -49,7 +50,7 @@ static LinphoneCoreVTable linphonec_vtable = {
    .global_state_changed = linphone_iphone_global_state_changed
 };</pre>
 
-	LinphoneCoreVTable包含:
+LinphoneCoreVTable包含:
 	* global_state_changed 全局状态改变回调
 	* registration_state_changed 注册状态改变回调
 	* call_state_changed 呼叫状态改变回调
