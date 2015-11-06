@@ -9,6 +9,7 @@ linphone-iphone是Linphone官方提供的iPhone版本源码，源代码结构可
 
 ## [流程](http://fossies.org/dox/linphone-3.7.0)
 ### 1. 初始化startLibLinphone
+
 * （1）模块初始化，包含mediastreamer2、ilbc、silk、amr、x264、h264、bcg729
 
 	<pre>
@@ -79,7 +80,8 @@ linphone-iphone是Linphone官方提供的iPhone版本源码，源代码结构可
 
 ### 4. 来电
 当有来电时，会触发call_state_changed发生变化（linphonec_vtable），于是会调用回调linphone_iphone_call_state
-	<pre>
+
+<pre>
 	static void linphone_iphone_call_state(LinphoneCore *lc, LinphoneCall* call, LinphoneCallState state,const char* message) {
 	[(LinphoneManager*)linphone_core_get_user_data(lc) onCall:call StateChanged: state withMessage:  message];
 }</pre>
@@ -118,47 +120,47 @@ linphone_iphone_call_state -> [LinphoneManager onCall:StateChanged:withMessage] 
 * 点击接听
 
 <pre>
-	onAcceptClick -> [PhoneMainView incomingCallAccepted] -> acceptCall->linphone_core_accept_call_with_params</pre>
+onAcceptClick -> [PhoneMainView incomingCallAccepted] -> acceptCall->linphone_core_accept_call_with_params</pre>
 	
 ### 6. 呼出
 * 呼出
 
 <pre>
-	DialerViewController ->[UICallButton touchUp:]-> [LinphoneManager call:displayName:transfer:] -> linphone_core_invite_address_with_params</pre>
+DialerViewController ->[UICallButton touchUp:]-> [LinphoneManager call:displayName:transfer:] -> linphone_core_invite_address_with_params</pre>
 
 ### 7. 摄像头设备
 * 前置后置
 
 <pre>
-	linphone_core_get_video_devices 获取所有设备号
-	linphone_core_set_video_device 设置设备号
-	linphone_core_get_video_device 获取当前设备号</pre>
+linphone_core_get_video_devices 获取所有设备号
+linphone_core_set_video_device 设置设备号
+linphone_core_get_video_device 获取当前设备号</pre>
 
 ### 8. 摄像头视频显示
 * 摄像头模块初始化
 
 <pre>
-	MSWebCamDesc ms_v4ios_cam_desc = {
-	"AV Capture",
-	&ms_v4ios_detect,
-	&ms_v4ios_cam_init,
-	&ms_v4ios_create_reader,
-	NULL
-	}; </pre>
+MSWebCamDesc ms_v4ios_cam_desc = {
+"AV Capture",
+&ms_v4ios_detect,
+&ms_v4ios_cam_init,
+&ms_v4ios_create_reader,
+NULL
+}; </pre>
 	
 startLibLinphone -> ms_init -> ms_voip_init -> ms_factory_init_voip -> ms_web_cam_manager_register_desc(ms_web_cam_desc[i]) -> cam_detect -> ms_v4ios_cam_desc.detect -> ms_v4ios_detect
 
 <pre>
-	 NSArray * array = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-	 for(i = 0 ; i < [array count]; i++)
-	 {
-		AVCaptureDevice * device = [array objectAtIndex:i];
-	 	MSWebCam *cam=ms_web_cam_new(&ms_v4ios_cam_desc);
-	 	cam->name= ms_strdup([[device modelID] UTF8String]);
-	 	cam->data = ms_strdup([[device uniqueID] UTF8String]);
-	 	ms_web_cam_manager_add_cam(obj,cam);
-	 }                                                                                   
-</pre>
+ NSArray * array = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+ for(i = 0 ; i < [array count]; i++)
+ {
+	AVCaptureDevice * device = [array objectAtIndex:i];
+ 	MSWebCam *cam=ms_web_cam_new(&ms_v4ios_cam_desc);
+ 	cam->name= ms_strdup([[device modelID] UTF8String]);
+ 	cam->data = ms_strdup([[device uniqueID] UTF8String]);
+ 	ms_web_cam_manager_add_cam(obj,cam);
+ }</pre>
+
 PS:ms_v4ios_cam_desc位于ms_web_cam_descs数组中, MSWebCamManager负责管理所有摄像头
 <pre>
 struct _MSWebCamManager{
@@ -168,29 +170,31 @@ struct _MSWebCamManager{
 </pre>
 	
 * IOSCapture初始化，设置OUTPUT Capture
-	<pre>
- 	MSFilterDesc ms_ioscapture_desc = {
- 	.id=MS_V4L_ID,
-  	.name="MSioscapture",
-  	.text="A video for IOS compatible source filter to stream pictures.",
-  	.ninputs=0,
-    .noutputs=1,
-    .category=MS_FILTER_OTHER,
-    .init=ioscapture_init,
-    .preprocess=ioscapture_preprocess,
-    .process=ioscapture_process,
-    .postprocess=ioscapture_postprocess,
-    .uninit=ioscapture_uninit,
-    .methods=methods
-    }; </pre>
-	ms_v4ios_create_reader -> ms_filter_new_from_desc(&ms_ioscapture_desc) -> ms_filter_new_from_desc -> ms_factory_create_filter_from_desc -> ms_ioscapture_desc.init -> ioscapture_init -> [IOSCapture initWithFrame:] -> initIOSCapture 
+
+<pre>
+MSFilterDesc ms_ioscapture_desc = {
+.id=MS_V4L_ID,
+	.name="MSioscapture",
+	.text="A video for IOS compatible source filter to stream pictures.",
+	.ninputs=0,
+  .noutputs=1,
+  .category=MS_FILTER_OTHER,
+  .init=ioscapture_init,
+  .preprocess=ioscapture_preprocess,
+  .process=ioscapture_process,
+  .postprocess=ioscapture_postprocess,
+  .uninit=ioscapture_uninit,
+  .methods=methods
+}; </pre>
+	
+ms_v4ios_create_reader -> ms_filter_new_from_desc(&ms_ioscapture_desc) -> ms_filter_new_from_desc -> ms_factory_create_filter_from_desc -> ms_ioscapture_desc.init -> ioscapture_init -> [IOSCapture initWithFrame:] -> initIOSCapture 
 	
 * 启动摄像头
 	linphone_core_iterate -> toggle_video_preview -> video_preview_start -> ms_web_cam_create_reader -> ms_v4ios_cam_desc.create_reader -> ms_v4ios_create_reader -> openDevice -> 初始化AVCaptureSession
 
 * 开始抓拍
 	video_stream_payload_type_changed(videostream.c) -> mediastream_payload_type_changed(mediastream.c) -> media_stream_change_decoder -> ms_filter_preprocess -> ioscapture_preprocess -> start -> [AVCaptureSession startRunning]
-	PS: 当payload_type发生改变时就会触发video_stream_payload_type_changed（video_stream_start初始化）
+PS: 当payload_type发生改变时就会触发video_stream_payload_type_changed（video_stream_start初始化）
 	
 * 视频显示
 通过代理captureOutput:didOutputSampleBuffer:fromConnection来接收摄像头数据
