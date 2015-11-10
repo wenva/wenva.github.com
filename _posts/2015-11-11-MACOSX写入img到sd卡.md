@@ -11,7 +11,7 @@ categories: MACOSX
 * 格式化
 <pre>
 diskutil list
-sudodiskutil unmountDisk /dev/disk3
+sudo diskutil unmountDisk /dev/disk3
 sudo newfs_msdos -F 16 /dev/disk3
 </pre>
 * 写入
