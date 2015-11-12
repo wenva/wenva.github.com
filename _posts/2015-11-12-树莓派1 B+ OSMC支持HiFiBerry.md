@@ -6,7 +6,7 @@ comments: false
 categories: 嵌入式
 ---
 
-最新版本的OSMC已经完整地支持了HiFiBerry，大家只要进行相关设置就ok，不用aplay、/etc/modules各种折腾（我就这么过来的）
+最新版本的OSMC已经完美地支持了HiFiBerry，大家只要进行相关设置就ok，不用aplay、/etc/modules各种折腾（我就这么过来的）
 
 ### 配置
 
