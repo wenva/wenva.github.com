@@ -40,10 +40,35 @@ PS：通过比对mac判断哪个是手机，但是发现个问题，`arp -a`只�
 ##### 步骤
 * 利用firefox或chrome抓取网页发送请求
 
-![image](http://7ximmr.com1.z0.glb.clouddn.com/tplink-dhcp-client.png)
+![image](http://7ximmr.com1.z0.glb.clouddn.com/tplink-dhcp-client-catch.png)
 
 * 利用curl模拟
 <pre>
 curl -s --header "Cookie:Authorization=Basic%20YWRtaW46ZXZpZGVv" http://192.168.12.1/userRpm/AssignedIpAddrListRpm.htm
 </pre>
 * 利用awk、sed进行后期处理
+<pre>
+curl -s --header "Cookie:Authorization=Basic%20YWRtaW46ZXZpZGVv" http://192.168.12.1/userRpm/AssignedIpAddrListRpm.htm|sed -n -e "/DHCPDynList/,/)/p"|sed '1d;$d'
+</pre>
+PS: Authorization后是密码信息，规则是: escape("Basic "+base64(admin:password))，javascript代码如下
+<pre>
+...
+var password = $("pcPassword").value;	
+var auth = "Basic "+Base64Encoding("admin:"+password);
+document.cookie = "Authorization="+escape(auth)+";path=/";
+...
+</pre>
+得到如下结果:
+<pre>
+"eVideos-Mini", "A8-20-66-4A-CB-B6", "192.168.12.101", "01:18:48", 
+"android-6ca5b9c4644c86ec", "34-23-BA-67-ED-C6", "192.168.12.149", "01:58:49", 
+...
+</pre>
+* 获取对应的客户端ip，并进行ping，ping通的话表示在线，否则表示不在线
+<pre>
+curl -s --header "Cookie:Authorization=Basic%20YWRtaW46ZXZpZGVv" http://192.168.12.1/userRpm/AssignedIpAddrListRpm.htm|awk -F[\ ,] '/smallmuou/{print $5}'|sed 's/"//g'|xargs ping -c 3
+</pre>
+
+
+### 后续工作
+以上已经讲出了本文的所有内容，对于本文开头提出的需求，这里还有个坑，由于iPhone手机在休眠情况下，也是ping不通的，因此需要通过加上额外的信息才能保证此方式的可行性，比如时间信息.
