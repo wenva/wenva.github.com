@@ -1,0 +1,84 @@
+---
+layout: post
+title: "UNIX/Linux命令行技巧"
+date: 2016-02-17
+comments: false
+categories: 技巧
+---
+
+命令行可以说是一个非常神奇的东西，喜欢MACOSX、Linux也是在于他们有强大的shell，本文将记录好用的技巧.
+
+* brew - 软件安装
+* vim － 编辑工具
+* tcpdump - 命令行抓包工具
+* sed - 流编辑器
+* awk - 文本分析工具
+* clang - 编译工具
+* netstat - 查看网络状态，包含路由表信息
+* xcodebuild - 编译xcode工程
+* traceroute - 查看路由路线
+<pre>
+traceroute -i www.baidu.com
+</pre>
+* lsof - 查看端口使用情况
+<pre>
+lsof -i:80  #查看80断口
+</pre>
+* svn - 版本管理工具
+* git - 版本管理工具
+* rvictl - iOS设备网卡映射
+* afplay - 播放本地音乐
+* mplayer - 播放音视频
+* system_profiler - 查看系统软硬件配置
+* stunclient - 获取公网IP
+* screencapture - 屏幕抓拍
+* open - 打开文件
+* lipo - 查看可执行文件CPU架构
+* pbcopy - 复制到剪贴板
+* pbpaste - 黏贴
+* say - 播放文字
+* diskutil - 磁盘工具
+* wc - 统计行数
+* nslookup - 根据域名查看ip
+* osascript - 执行AppleScript、JavaScript
+<pre>
+获取Safari的url
+osascript -e 'tell application "Safari" to get URL of current tab of front window'
+设置音量
+osascript -e 'set volume 1'
+</pre>
+* airport - 获取热点信息
+<pre>
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+airport -s
+</pre>
+* networksetup - 网络设置
+<pre>
+连接WIFI
+networksetup -setairportnetwork en0 WIFI_SSID WIFI_PASSWORD
+</pre>
+* dsenableroot - root用户使能
+<pre>
+//Enable
+dsenableroot
+
+//Disable
+dsenableroot -d
+</pre>
+
+* <(some command) 可以把某命令当成一个文件,系统临时创建一个fd,可以通过`echo <(date)`验证
+* cat <<EOF - 了解什么叫 “[here documents](http://zh.wikipedia.org/wiki/Here文档)”
+* man ascii - 查看ascii码表
+* ssh user@server bash < /path/to/local/script.sh - 远程执行本地脚本
+* python -m SimpleHTTPServer - 把当前目录设为HTTP服务目录，并启动http服务，端口8000
+* 在 bash 里，使用 Ctrl-R 而不是上下光标键来查找历史命令
+* [重定向](https://www.ustack.com/blog/有关-shell-重定向那些你不知道的故事/)
+<pre>
+0 - 输入
+1 - 输出
+2 - 错误
+cat < test 等价于 cat 0< test
+echo hel > test 等价于 echo hel 1> test
+>/dev/null 2>&1 - 将1指向/dev/null，2执行1，即输出错误到屏幕上
+2>&1 >/dev/null - 将2执行1，并把1执行/dev/null，这样输出和错误都将输出到/dev/null,即输出和错误都不输出到屏幕上
+</pre>
