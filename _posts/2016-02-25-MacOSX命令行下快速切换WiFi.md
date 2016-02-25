@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "MacOSX命令行下网络配置若干TIP"
+title: "MacOSX命令行下快速切换WiFi"
 date: 2016-02-25
 comments: false
 categories: MacOSX
 ---
 
-办公室内有多个WiFi热点，由于工作内容的不同，需要不停地在多个WiFi下切换，而且有些WiFi还需要手动分配IP，如果是使用手动选择WiFi，再配置就非常不方便，因此，此处列出脚本化操作关键点
+办公室内有多个WiFi热点，由于工作内容的不同，需要不停地在多个WiFi下切换，而且有些WiFi还需要手动分配IP，如果是使用手动选择WiFi，再配置就非常不方便，因此，需要实现命令行下快速切换WiFi，首先列出一些tips
+
+### 1. Tips
 
 * 查看ip信息
 <pre>
@@ -47,3 +49,5 @@ airport -s
 <pre>
 airport -I
 </pre>
+
+### 2. 脚本化
