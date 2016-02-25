@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MacOSX平台命令行下网络配置若干TIP"
+title: "MacOSX命令行下网络配置若干TIP"
 date: 2016-02-25
 comments: false
 categories: MacOSX
@@ -13,9 +13,28 @@ categories: MacOSX
 ifconfig
 </pre>
 
-* 查看路由
+* 查看DNS
+<pre>
+networksetup -getdnsservers Wi-Fi
+</pre>
+
+* 设置DNS
+<pre>
+networksetup -setdnsservers Wi-Fi xxx.xxx.xxx.xxx
+</pre>
+
+* 查看默认网关
 <pre>
 netstat -nr|grep default
+</pre>
+
+* 删除默认网关
+<pre>
+sudo route delete default
+</pre>
+* 添加默认网关
+<pre>
+sudo route add default xxx.xxx.xxx.xxx
 </pre>
 
 * 查看WiFi列表
