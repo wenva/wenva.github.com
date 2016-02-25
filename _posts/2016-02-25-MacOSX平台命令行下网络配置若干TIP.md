@@ -20,5 +20,11 @@ netstat -nr|grep default
 
 * 查看WiFi列表
 <pre>
+ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+airport -s
+</pre>
 
+* 获取当前WiFi信息
+<pre>
+airport -I
 </pre>
