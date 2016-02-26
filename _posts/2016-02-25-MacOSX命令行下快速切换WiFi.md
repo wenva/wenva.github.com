@@ -10,7 +10,7 @@ categories: MacOSX
 
 ### 1. Tips
 
-* 查看ip信息
+* 查看IP信息
 <pre>
 ifconfig
 </pre>
@@ -48,6 +48,23 @@ airport -s
 * 获取当前WiFi信息
 <pre>
 airport -I
+</pre>
+
+* 手动配置IP
+<pre>
+networksetup -setmanual networkservice  ip subnet router
+或
+networksetup -setmanualwithdhcprouter networkservice ip 
+</pre>
+
+* 动态分配IP
+<pre>
+networksetup -setdhcp networkservice
+</pre>
+
+* 查看当前网络配置
+<pre>
+networksetup -getinfo Wi-Fi
 </pre>
 
 ### 2. 脚本化
