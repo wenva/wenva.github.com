@@ -68,3 +68,11 @@ networksetup -getinfo Wi-Fi
 </pre>
 
 ### 2. 脚本化
+配置dd-wrt-xhw为手动分配IP为192.168.8.161
+<pre>
+networksetup -setmanual Wi-Fi 192.168.8.161 255.255.255.0 192.168.8.1;networksetup -setairportnetwork en0 dd-wrt-xhw password
+</pre>
+配置22#3F-szjjyfb-AP1_5G为自动获取IP
+<pre>
+networksetup -setdhcp Wi-Fi;networksetup -setairportnetwork en0 22#3F-szjjyfb-AP1_5G password
+</pre>
