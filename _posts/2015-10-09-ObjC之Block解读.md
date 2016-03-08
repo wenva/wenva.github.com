@@ -14,7 +14,7 @@ categories: ios
 	* 不引用外部成员变量或局部变量（引用全局或静态也是NSGlobalBlock）
 	<pre>
 void (^block)(int a, int b) = ^(int a, int b){
-	//此处不能对除了形参，不能对使用外部变量
+	//此处除了形参，不能使用外部变量
 	int c = a+b;
 };</pre>
 * NSStackBlock
@@ -23,7 +23,7 @@ void (^block)(int a, int b) = ^(int a, int b){
 	* 不管block是否使用外部变量，都是NSStackBlock
 	<pre>
 	NSLog(@"block = %@", ^{
-		//此处不管是否对外部变量，都是NSStackBlock
+		//此处不管是否访问外部变量，都是NSStackBlock
 	})</pre>
 * NSMallocBlock
 	* 位于堆内存
@@ -36,9 +36,9 @@ void (^block)(int a, int b) = ^(int a, int b){
 	int d = c+a+b;
 };</pre>
 
-### 2 外部变量(针对NSStackBlock、NSMallocBlock)
+### 2 引用外部变量(针对NSStackBlock、NSMallocBlock)
 
-#### 2.1 外部基础类型变量
+#### 2.1 引用外部基础类型变量
 <pre>
 @interface TestViewController () {
     int _count; //成员变量
