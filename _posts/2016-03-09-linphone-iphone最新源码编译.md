@@ -27,7 +27,7 @@ git clone https://github.com/BelledonneCommunications/linphone-iphone --recursiv
 
 #### 特性
 
-可以通过`./prepare.py -lf`来查看特性开关，若不想编译哪个模块，设为OFF，如我不需要编译MKV模块，这执行如下命令
+可以通过`./prepare.py -lf`来查看特性开关，若不想编译哪个模块，设为OFF，如我不需要编译MKV模块，就执行如下命令
 <pre>
 ./prepare.py -DENABLE_MKV=ON arm64 armv7
 </pre>
@@ -41,7 +41,7 @@ make
 <pre>
 wget --no-check-certificate https://raw.githubusercontent.com/FFmpeg/gas-preprocessor/master/gas-preprocessor.pl && \ chmod +x gas-preprocessor.pl && \ sudo mv gas-preprocessor.pl /usr/local/bin
 </pre>
-PS: 不要去下载https://github.com/yuvi/gas-preprocessor这个，可能是比较旧；更新完后，记得将`/usr/local/bin`添加到PATH环境变量
+PS: 不要去下载https://github.com/yuvi/gas-preprocessor这个，可能是比较旧；更新完后，记得将`/usr/local/bin`添加到PATH环境变量中
 <pre>
 export PATH=/usr/local/bin:$PATH
 </pre>
