@@ -3,7 +3,7 @@ layout: post
 title: "关于Github上的Contributions不记录问题"
 date: 2015-07-03
 comments: false
-categories: git
+categories: Git
 ---
 很长时间一段时间都认为Github的Contributions只有通过pull request才能更新，今天特地Google了下，发现原来不是如此，关于Contributions，Github给出了答案。
 
