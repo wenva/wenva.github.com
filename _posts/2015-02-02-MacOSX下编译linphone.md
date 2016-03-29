@@ -36,13 +36,16 @@ Protocol)，其是在实时传输协议(Real-time Transport Protocol)基础上�
 
 
 ## Build 问题汇总
+
 ### 1. error: C compiler cannot create executables
+
 ##### 问题
 <pre>
 checking whether the C compiler works... no
 configure: error: in `/Users/starnet/Projects/linphone-iphone/submodules/build-i386-apple-darwin/externals/polarssl':
 configure: error: C compiler cannot create executables
 </pre>
+
 ##### 分析
 <pre>
 clang -std=c99 -Qunused-arguments -Wno-unknown-warning-option -Wno-unused-command-line-argument-hard-error-in-future  -arch i386  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk -mios-simulator-version-min=4.0 -DTARGET_OS_IPHONE=1 -D__IOS -fms-extensions -Dsha256=polarssl_sha256  -Dasm=__asm hello.c 
@@ -59,6 +62,7 @@ SDK_VERSION=4.2
 </pre>
 
 ### 2. aclocal: error: aclocal: file 'm4/lt~obsolete.m4' does not exist
+
 ##### 问题
 <pre>
 -e  Running autogen for msopus in /Users/starnet/Projects/linphone-iphone/submodules/build/..//externals/opus 
@@ -77,6 +81,7 @@ sudo ln -s /usr/local/share/aclocal /opt/local/share/
 </pre>
 
 ### 3. configure: error: GNU gettext tools not found; required for intltool
+
 ##### 问题
 <pre>
 configure: error: GNU gettext tools not found; required for intltool
@@ -93,6 +98,7 @@ sudo ln -s /usr/local/Cellar/gettext/0.19.3_1/bin/xgettext /usr/local/bin/
 </pre>
 	
 ### 4. 'CoreFoundation/CFUserNotification.h' file not found
+
 ##### 问题
 <pre>
 In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFHost.h:22:
@@ -110,6 +116,7 @@ declare -x C_INCLUDE_PATH="/Developer//Platforms/MacOSX.platform/Developer/SDKs/
 直接export C_INCLUDE_PATH = ""
 	
 ### 5. error: Libtool library used but 'LIBTOOL' is undefined
+
 ##### 问题
 <pre>
 CUnit/Sources/Automated/Makefile.am:3: error: Libtool library used but 'LIBTOOL' is undefined
@@ -148,6 +155,7 @@ sudo cp /usr/local/Cellar/pkg-config/0.28/share/aclocal/pkg.m4 /opt/local/share/
 </pre>	
 
 ### 7. syntax error near unexpected token `MSGFMT,'
+
 ##### 问题
 <pre>
 /Users/starnet/Projects/linphone-iphone/submodules/build/..//linphone/mediastreamer2/configure: line 17534: syntax error near unexpected token `MSGFMT,'
@@ -167,6 +175,7 @@ sudo cp /usr/local/Cellar/gettext/0.19.3_1/share/aclocal/* /opt/local/share/aclo
 </pre>
 
 ### 8. ld: illegal text-relocation to '_vp8_dequant_idct_add_mmx'
+
 ##### 问题
 <pre>
 ld: illegal text-relocation to '_vp8_dequant_idct_add_mmx' in /Users/starnet/Projects/linphone-iphone/liblinphone-sdk/i386-apple-darwin/lib/libvpx.a(dequantize_mmx.asm.o) from '_vp8_dequant_idct_add_mmx' in /Users/starnet/Projects/linphone-iphone/liblinphone-sdk/i386-apple-darwin/lib/libvpx.a(dequantize_mmx.asm.o) for architecture i386
@@ -188,16 +197,22 @@ AM_LDFLAGS= -read_only_relocs suppress
 </pre>
 
 ### 9. extract-cfile.awk无法下载
+
 ##### 问题
+
 <pre>
 /usr/local/bin/wget --no-check-certificate http://www.webrtc.org/ilbc-freeware/ilbc-source-code-and-utili/ilbc-utilities/extract-cfile.awk -O extract-cfile.awk
 --2015-02-04 12:59:41--  http://www.webrtc.org/ilbc-freeware/ilbc-source-code-and-utili/ilbc-utilities/extract-cfile.awk
 Resolving www.webrtc.org... 74.125.23.121
 Connecting to www.webrtc.org|74.125.23.121|:80... 
 </pre>
+
 ##### 分析
+
 链接不存在
+
 ##### 处理
+
 到www.ilbcfreeware.org下载extract-cfile.txt，拷贝到上传到可用的服务器，这里我上传到github，地址http://7ximmr.com1.z0.glb.clouddn.com/extract-cfile.awk
 编辑submodules/libilbc-rfc3951/downloads/Makefile.am
 <pre>
@@ -206,7 +221,9 @@ extract_script_url = https://github.com/wenva/wenva.github.com/raw/master/resour
 </pre>
 
 ### 10. No working C compiler found.
+
 ##### 问题
+
 <pre>
 ./configure --prefix=/Users/starnet/Projects/linphone-iphone/submodules/build/..//../liblinphone-sdk/i386-apple-darwin  --host=i386-apple-darwin --enable-static --enable-pic --cross-prefix=$SDK_BIN_PATH/ --extra-ldflags="$COMMON_FLAGS" --extra-cflags="$COMMON_FLAGS "
 Loading config.site for iPhone platform=Simulator version=4.2
@@ -215,7 +232,9 @@ Loading config.site for iPhone platform=Simulator version=4.2
 Selecting SDK path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
 No working C compiler found.
 </pre>
+
 ##### 分析
+
 查看configure文件
 <pre>
 ...
@@ -227,7 +246,9 @@ if $cc_cmd >conftest.log 2>&1; then
 clang: error: unknown argument: '-falign-loops=16' 
 </pre>
 即clang不支持-falign-loops
+
 ##### 处理
+
 删除submodules/build-i386-apple-darwin/externals/x264
 编辑submodules/externals/x264/configure，去除-falign-loops
 <pre>
@@ -238,6 +259,7 @@ clang: error: unknown argument: '-falign-loops=16'
 </pre>
 
 ### 11. compile: unable to infer tagged configuration
+
 ##### 问题
 <pre>
 libtool: compile: unable to infer tagged configuration
@@ -258,6 +280,7 @@ OBJCLINK = $(LIBTOOL) $(AM_V_lt) <font color="ff0000"> --tag=CC </font> $(AM_LIB
 </pre>
 
 ### 12. /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/strings: No such file or directory
+
 <pre>
 Selecting SDK path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.2.sdk
 ./configure: line 730: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/strings: No such file or directory
@@ -270,7 +293,9 @@ builders.d/x264.mk:53: recipe for target '/Users/starnet/Projects/linphone-iphon
 <pre>
 sudo ln -s /Applications/Xcode.app/Contents/Developer//Toolchains/XcodeDefault.xctoolchain/usr/bin/strings /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/
 </pre>
+
 ### 13.ld: illegal text-relocation to '_x264_cabac_range_lps'
+
 问题
 <pre>
 ld: illegal text-relocation to '_x264_cabac_range_lps' in libx264.a(cabac.o) from '_x264_cabac_encode_decision_asm' in libx264.a(cabac-a.o) for architecture i386
@@ -281,13 +306,16 @@ LDFLAGS="$LDFLAGS -read_only_relocs suppress"
 </pre>
 
 ## 运行问题汇总
+
 ### 1. 登录时crash
+
 ##### 问题
 <pre>
 belle_sip_object_vptr_t *vptr=obj->vptr; 崩溃
 </pre>
 
 ##### 分析
+
 调用栈:从下到上
 <pre>
 belle_sip_object_marshal
