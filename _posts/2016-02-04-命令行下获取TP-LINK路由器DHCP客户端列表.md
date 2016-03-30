@@ -42,6 +42,7 @@ var auth = "Basic "+Base64Encoding("admin:"+password);
 document.cookie = "Authorization="+escape(auth)+";path=/";
 ...
 </pre>
+PS: 可以使用base64在命令行下进行编码，但要注意换行符，比如`echo "evideo" | base64`，此时将编码`evideo+换行`,需要使用`echo -n "evideo" | base64`
 * 利用awk、sed进行后期处理
 <pre>
 curl -s --header "Cookie:Authorization=Basic%20YWRtaW46ZXZpZGVv" http://192.168.12.1/userRpm/AssignedIpAddrListRpm.htm|sed -n -e "/DHCPDynList/,/)/p"|sed '1d;$d'
