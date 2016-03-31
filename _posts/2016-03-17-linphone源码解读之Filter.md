@@ -6,7 +6,7 @@ comments: false
 categories: iOS
 ---
 
-Filter是linphone源码的精髓，Filter可以比作过滤器，负责对数据进行不同功能的操作，如解码、编码、显示、滤噪等等. 往往一个流程需要很多歌Filter来组成，只有经过一层层的过滤，才能得到纯净的数据. 比如视频接收显示流程，需要经过rtprecv、decoder、tee、jpegwriter、display几个Filter. 下面我们来详细地讲述Filter.
+Filter是linphone源码的精髓，Filter可以比作过滤器，负责对数据进行不同功能的操作，如解码、编码、显示、滤噪等等. 往往一个流程需要很多个Filter来组成，只有经过一层层的过滤，才能得到【纯净】的数据. 比如视频接收显示流程，需要经过rtprecv、decoder、tee、jpegwriter、display几个Filter. 下面我们来详细地讲述Filter.
 
 ### 定义
 <pre>
@@ -57,7 +57,7 @@ MS2_PUBLIC MSFilter *ms_filter_new_from_desc(MSFilterDesc *desc); //根据描述
 
 ### 连接
 
-在文章开头我已声明过，一个流程可能会有多个Filter，那么问题来了，我们如何关联这个Filter？这里大家可以想到化学实验课时，我们一般会使用一个导管把上一步的输出接到下一步的输入，这里也一样，我们可以通过ms_filter_link来连接2个Filter.
+在文章开头我已声明过，一个流程可能会有多个Filter，那么问题来了，我们如何关联这些Filter？这里大家可以想到化学实验课时，我们一般会使用一个导管把上一步的输出接到下一步的输入，这里也一样，我们可以通过ms_filter_link来连接2个Filter.
 
 <pre>
 // 连接f1的outputs[pin1]与f2的inputs[pin2]
