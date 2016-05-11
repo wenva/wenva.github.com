@@ -6,7 +6,7 @@ comments: false
 categories: shell
 ---
 
-xargs和alias是UNIX/类UNIX下比较常用的命令，而且也非常好用；
+xargs和alias是UNIX/类UNIX下比较常用的命令，而且也非常好用；他们非常和谐的各自活着，可是有一天，有一个攻城狮把他俩凑在一起，于是他们吵架了，闹矛盾了. 我们一起来看看为何吵架？
 
 ## xargs
 
