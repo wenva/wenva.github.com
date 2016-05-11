@@ -6,6 +6,8 @@ comments: false
 categories: shell
 ---
 
+xargs和alias是UNIX/类UNIX下比较常用的命令，而且也非常好用；
+
 ## xargs
 
 <pre>
@@ -53,7 +55,7 @@ A trailing space in  value causes the next word to be checked for alias substitu
 PS: 大致含义是当value后面加上一个空格，则下一个单词也会用alias一起替换
 
 <pre>
-alias
+alias xargs='xargs ' #此处加一空格
 alias pr='printf'
 echo 'hello'|xargs pr
 </pre>
