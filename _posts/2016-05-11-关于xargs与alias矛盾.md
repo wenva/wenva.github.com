@@ -59,3 +59,5 @@ alias xargs='xargs ' #此处加一空格
 alias pr='printf'
 echo 'hello'|xargs pr
 </pre>
+
+PS: 于是解决了矛盾，他俩可以欢快地在一起，不行你也试试.
