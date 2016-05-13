@@ -29,6 +29,7 @@ alias [-p] [name[=value] ... ]
 alias起到别名的作用，一般有两个作用，一个是缩短命令长度，二是起别名.
 
 <pre>
+alias rvi="unrvi>/dev/null;udid|awk '/Serial Number/{print \$3}'|xargs rvictl -s"
 alias ll='ls -al'
 </pre>
 
@@ -43,7 +44,7 @@ PS: 按正常思路，应该是输出`hello`，可惜报出如下错误`pr: cann
 
 查了下资料发现:
 
-> alias属于bash的内部命令，外部命令是无法识别的，而xargs则是外部命令，可以通过which查看
+> alias属于bash的内部命令，外部命令是无法识别的，而xargs则是外部命令，可以通过which就可以知道是内部还是外部命令
 
 那么问题总要解决，该如何解决，总不会在/usr/local/bin下创建个pr文件，这么繁琐的事肯定不干，于是继续搜索，终于还是找到解决方案:
 
@@ -59,5 +60,11 @@ alias xargs='xargs ' #此处加一空格
 alias pr='printf'
 echo 'hello'|xargs pr
 </pre>
+输出：
 
-PS: 于是解决了矛盾，他俩可以欢快地在一起，不行你也试试.
+<pre>
+hello
+</pre>
+
+PS: 于是解决了矛盾，他俩可以欢快地在一起，不信你也试试.
+
