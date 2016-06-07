@@ -11,5 +11,3 @@ categories: Git
 ![image](http://gitbook.liuhui998.com/assets/images/figure/rebase3.png)
 
 经过`git rebase`后，mywork分支的起点从C2切换到C4.
-
-* Gi
