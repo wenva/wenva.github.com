@@ -39,7 +39,7 @@ make
 </pre>
 若在编译过程中，遇到`GNU assembler not found, install/update gas-preprocessor`记得更新gas-preprocessor
 <pre>
-wget --no-check-certificate https://raw.githubusercontent.com/FFmpeg/gas-preprocessor/master/gas-preprocessor.pl && \ chmod +x gas-preprocessor.pl && \ sudo mv gas-preprocessor.pl /usr/local/bin
+wget --no-check-certificate https://raw.githubusercontent.com/FFmpeg/gas-preprocessor/master/gas-preprocessor.pl && chmod +x gas-preprocessor.pl && sudo mv gas-preprocessor.pl /usr/local/bin
 </pre>
 PS: 不要去下载https://github.com/yuvi/gas-preprocessor这个，可能是比较旧；更新完后，记得将`/usr/local/bin`添加到PATH环境变量中
 <pre>
