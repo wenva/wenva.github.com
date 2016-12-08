@@ -20,7 +20,9 @@ A:说明视频编码不支持，core show codecs video查看支持的视频编�
 [NAT分类](http://blog.163.com/hlz_2599/blog/static/1423784742012317102533915/)
 
 ## Linphone
+
 ###### Stun Server
+
 当设置Stun Server后, Linphone会获取从Stun Server获取到公网IP和port，并在发送SIP时填充Contact，当没有设置时，则Asterisk会返回，填写Recieved和rport
 <pre>
 12:34:24.516868 IP xuwenfas-iPhone.63627 > 192.168.60.151.5060: SIP, length: 411
