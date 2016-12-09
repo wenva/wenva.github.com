@@ -48,7 +48,7 @@ PS: 此处必须加-n，否则默认是带换行符
 
 ##### 2. 脚本过滤器（Script Filter）
 
-有时候你需要在alfred直接展现结果，你就需要用到Script Filter.
+有时候你需要在alfred直接在下拉列表中展现结果（非常拉风），你就需要用到Script Filter.
 ![image](https://www.alfredapp.com/help/workflows/inputs/script-filter/json-example.png)
 
 Alfred是通过XML来展现输出，XML格式如下：
