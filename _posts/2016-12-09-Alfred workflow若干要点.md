@@ -6,7 +6,7 @@ comments: false
 categories: 效率
 ---
 
-Alfred workflow真是个神器，只从上手后，就割舍不掉，目前很多原来繁琐的动作都可以直接通过简单的快捷方式进行，虽然网上已经有很多别人写好的workflow，但总是不够用，毕竟各自的偷懒点不同，因此就必须会workflow的编写，本文将为大家介绍最为常用的技巧.
+Alfred workflow真是个神器，自从上手后，就割舍不掉，目前很多原来繁琐的动作都可以通过简单的方式进行，虽然网上已经有很多别人写好的workflow，但总是不够用，毕竟各自的偷懒点不同，因此就必须会workflow的编写，本文将为大家介绍最为常用的技巧.
 
 
 ### 工作模式
@@ -48,7 +48,7 @@ PS: 此处必须加-n，否则默认是带换行符
 
 ##### 2. 脚本过滤器（Script Filter）
 
-有时候你需要在alfred直接在下拉列表中展现结果（非常拉风），你就需要用到Script Filter.
+有时候你需要直接在alfred的下拉列表中展现结果（非常拉风），你就需要用到Script Filter.
 ![image](https://www.alfredapp.com/help/workflows/inputs/script-filter/json-example.png)
 
 Alfred是通过XML来展现输出，XML格式如下：
