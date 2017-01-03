@@ -38,7 +38,31 @@ LC_ALL=
 </pre>
 如：zh_CN.GB2312
 
-可以使用`locale -a`来查看系统支持的所有字符集.
+可以使用`locale -a`来查看系统支持的所有字符集. 如果字符集缺省，则采用默认值，可以通过`locale -v -a`查看，如
+<pre>
+locale: zh_CN           archive: /usr/lib/locale/locale-archive
+-------------------------------------------------------------------------------
+    title | Chinese locale for Peoples Republic of China
+    email | bug-glibc-locales@gnu.org
+ language | Chinese
+territory | P.R. of China
+ revision | 0.1
+     date | 2000-07-25
+  codeset | GB2312
+
+...
+
+locale: zh_CN.gb2312    archive: /usr/lib/locale/locale-archive
+-------------------------------------------------------------------------------
+    title | Chinese locale for Peoples Republic of China
+    email | bug-glibc-locales@gnu.org
+ language | Chinese
+territory | P.R. of China
+ revision | 0.1
+     date | 2000-07-25
+  codeset | GB2312
+</pre>
+PS: zh_CN与zh_CN.gb2312是等价的
 
 ## 3. 分类(Categories)
 风俗可能会包含各方各面，比如吃什么、做什么等等. 而locale同样包含着各个分类，从上面的结果可以看出其包含12个分类(LC_前缀)
