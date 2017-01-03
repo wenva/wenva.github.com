@@ -11,9 +11,7 @@ categories: unix
 ## 1. 风俗(locale)
 
 在人类的世界里，不同地域的人有着不同的风俗，而计算机是给人用的，那自然也要遵循着这一套规则，而这套规则就是locale，我们执行下`locale`命令：
-
 <pre>
-
 smallmuou:locales $ locale
 LANG=en_US.UTF-8
 LC_CTYPE=zh_CN.utf8
@@ -29,7 +27,6 @@ LC_TELEPHONE="en_US.UTF-8"
 LC_MEASUREMENT="en_US.UTF-8"
 LC_IDENTIFICATION="en_US.UTF-8"
 LC_ALL=
-
 </pre>
 
 ## 2. 表示
