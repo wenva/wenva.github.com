@@ -31,6 +31,34 @@ LC_ALL=
 </pre>
 
 ## 分类(Categories)
-风俗可能会包含各方各面，比如可以吃什么、不可以吃什么、可以干什么、不可以什么等等. 而locale同样包含着各个子项目，从上面的结果也可以看出(LC_前缀)
+风俗可能会包含各方各面，比如吃什么、做什么等等. 而locale同样包含着各个分类，从上面的结果可以看出其包含12个分类(LC_前缀)
 
 * LC_CTYPE
+* LC_NUMERIC - 数字格式，如小数点、千分位各是什么字符
+* LC_TIME - 时间格式，如星期、月、上午、下午怎么表示
+* LC_MESSAGES - 消息格式，如『肯定』、『否定』怎么表示
+* LC_PAPER - 纸张大小，如长、宽多少
+* LC_TELEPHONE - 电话号码表示，如区号，显示格式
+* LC_NAME - 姓名表示，如
+* 
+
+具体定义可以到/usr/share/i18n/locates/下对应的文件查看，其中字符采用UNICODE16表示，如zh_CN文件
+
+```
+...
+
+LC_NUMERIC
+decimal_point             "<U002E>"    小数点用.表示
+thousands_sep             "<U002C>"    千分位用,表示
+grouping                  3
+END LC_NUMERIC
+
+LC_TIME
+abday 	"<U65E5>";"<U4E00>";"<U4E8C>";"<U4E09>";"<U56DB>";"<U4E94>";"<U516D>"  星期缩写：日、一、二、三、四、五、六
+
+day 	"<U661F><U671F><U65E5>";/   星期日
+	"<U661F><U671F><U4E00>";/		星期一
+...
+```
+
+## 
