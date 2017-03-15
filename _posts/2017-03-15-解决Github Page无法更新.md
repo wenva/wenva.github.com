@@ -38,4 +38,10 @@ bundle exec jekyll serve
                     Can't handle generic non-integer character reference 'laquo_space'
 jekyll 3.4.1 | Error:  Can't handle generic non-integer character reference 'laquo_space'
 ```
-提示还是比较明显的，是原来的一篇文章语法错误，原来是标题使用了\<\<，于是修正，并提交到Github，发现更新正常了。
+提示还是比较明显的，是原来的一篇文章语法错误，原来是标题使用了\<\<
+
+```
+### 5. \<\< self 理解
+```
+
+于是添加转义符修正，并提交更新到Github，发现更新正常了。
