@@ -6,7 +6,7 @@ comments: false
 categories: Github
 ---
 
-春节后，写了一篇文章提交到Github，发现pages没有更新，原先以为Github问题，等了2天，发现一直不更新，于是去查了下什么原因，原来Github在构建pages失败时，会发送邮件给你的邮箱（由于设置了另外一个邮件，因此一直没察觉），查看邮件，发现真的是构建失败，给出的提示是`Your site is having problems building: Page build failed. For more information, see https://help.github.com/articles/troubleshooting-github-pages-builds/.`于是点击相应连接，了解到`Page build failed`是构建失败，具体原因可以尝试在本地构建。Github给出了[本地构建方法](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/#platform-linux)
+春节后，写了一篇文章提交到Github，发现pages没有更新，原先以为Github问题，等了2天，发现一直不更新，于是去查了下什么原因，原来Github在构建pages失败时，会发送邮件给你的邮箱（由于设置了另外一个邮件，因此一直没察觉），查看邮件（也可以进入repo设置界面查看），发现真的是构建失败，给出的提示是`Your site is having problems building: Page build failed. For more information, see https://help.github.com/articles/troubleshooting-github-pages-builds/.`于是点击相应连接，了解到`Page build failed`是构建失败，具体原因可以尝试在本地构建。Github给出了[本地构建方法](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/#platform-linux)
 
 这里总结构建过程下：
 
