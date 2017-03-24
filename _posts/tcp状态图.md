@@ -12,7 +12,7 @@
 ## 连接建立阶段（三次握手）
 
 ```
-CLOSE                                  ESTABLISH
+CLOSED                                 ESTABLISH
   |                                        |
   |---------------- CLIENT ----------------|
   |                                        |
@@ -33,18 +33,64 @@ CLOSE                                  ESTABLISH
   |------------->|------------->|--------->|
   |              |  S: SYN ACK  |          |
   |              |              |          |
-  |              |              |          |
+  |              |    R: RST    |          |
   |              |<-------------|          |
   |              |              |          |
 
 ```
-
-* CLOSE - 关闭态
+* CLIENT - 客户端
+* SERVER - 服务端
+* CLOSED - 关闭态
+* ESTABLISH - 连接态
 * LISTEN - 监听态（被动打开）
 * SYN_SEND - SYN发送态（已发送SYN）
 * SYN_RECV - SYN接收态（已接收SYN，并发送ACK）
-* ESTABLISH - 连接态
 * 三次握手: 客户端发送SYN -> 服务端接收SYN，并发送SYN、ACK -->  客户端接收SYN、ACK，并发送ACK
-* **RST: SYN_RECV发送RST可以回到LISTEN，主要用于处理异常连接**
+* RST - 复位指令，SYN_RECV在接收到RST可以回到LISTEN，主要用于处理异常连接，至于什么情况会出现RST，可以点击此[传送门](https://my.oschina.net/costaxu/blog/127394)
 
-## 连接结束阶段（四次握手）
+## 连接释放阶段（四次握手）
+
+```
+ESTABLISH                                        CLOSED
+  |                                                 |
+  |--------------------- ACTIVE --------------------|
+  |                                                 |
+  |         FIN_WAIT_1   FIN_WAIT_2  TIME_WAIT      |
+  |              |            |          |          |
+  |              |   R: ACK   |  R: FIN  |   2MSL   |
+  |------------->|----------->|--------->|--------->|
+  |    S: FIN    |            |  S: ACK  |          |
+  |              |            |          |          |
+  |              |            |          |          |
+  |              |     R: FIN ACK        |          |
+  |              |---------------------->|          |
+  |              |       S: ACK          |          |
+  |              |                       |          |
+  |              |                       |          |
+  |              |         CLOSING       |          |
+  |              |   R: FIN   |  R:ACK   |          |
+  |              |----------->|--------->|          |
+  |              |   S: ACK   |          |          |
+  |                                                 |
+  |                                                 |
+  |-------------------- PASSIVE --------------------|
+  |                                                 |
+  |          CLOSE_WAIT     LAST_ACK                |
+  |              |              |                   |
+  |    R: FIN    |              |      R: ACK       |
+  |------------->|------------->|------------------>|
+  |    S: ACK    |    S: FIN    |                   |
+  |              |              |                   |
+
+```
+* ACTIVE - 主动方
+* PASSIVE - 被动方
+* CLOSED - 关闭态
+* ESTABLISH - 连接态
+* FIN_WAIT_1 - 主动发送FIN
+* CLOSE_WAIT - 收到FIN，并发送ACK
+* FIN_WAIT_2 - 主动发送FIN后，并接收到ACK
+* LAST_ACK - 被动方进入CLOSE_WAIT后，再次发送FIN
+* TIME_WAIT - 等待结束态
+* 2MSL - 2倍报文最大生存时间，为什么需要2倍，因为当被动方发现收不到ACK，则会重发FIN，因此需要等待2倍MSL来预留需要再次发送ACK的时间
+* 四次握手：主动方发送FIN -> 被动方接收FIN，并发送ACK -> 被动方发送FIN -> 主动方接收FIN，并发送ACK 
