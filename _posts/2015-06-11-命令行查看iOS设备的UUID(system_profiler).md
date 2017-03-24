@@ -3,7 +3,7 @@ layout: post
 title: "命令行查看iOS设备的UUID(system_profiler)"
 date: 2015-06-11
 comments: false
-categories: iOS
+categories: SHELL
 ---
 
 每次要查看iOS设备的UUID，都要打开iTool或iTunes，显得非常麻烦，有没有更简单的方式，经过Google发现真有，现将此命令记录于此。

@@ -3,7 +3,7 @@ layout: post
 title: "论XCODE之Architectures、Valid Architectures和Build Active Architecture Only"
 date: 2015-04-15
 comments: false
-categories: iOS
+categories: OBJC
 ---
 
 对于自己不懂的东西，总想弄明白，可有时又没有那么多时间，于是可能就不了了之，就像今天要讲的"Architectures", 之前弄明白了“Build Active Architecture Only”的含义，可是对于“Architectures”和“Valid Architectures”，确是云里雾里的，今天总算抽点时间把它弄明白了.

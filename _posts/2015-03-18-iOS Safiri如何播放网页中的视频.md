@@ -3,7 +3,7 @@ layout: post
 title: "iOS Safiri如何播放网页中的视频"
 date: 2015-03-18
 comments: false
-categories: iOS
+categories: APPLE
 ---
 众所周知，网页中的视频一般是基于flash的，而接触过iOS的人，应该都知道，iOS的safari是不支持的flash，至于iOS为何不支持flash，可以查考[这里](http://www.zhihu.com/question/19609079). 那如何支持视频呢？对，就是html5的video，iOS safari已经支持了html5的video. 于是第三方视频网站要实现的就是提供带video的html，这样iOS设备才有办法播放.
 

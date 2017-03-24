@@ -3,7 +3,7 @@ layout: post
 title: "awesome-ios-develop"
 date: 2015-06-25
 comments: false
-categories: iOS
+categories: OBJC
 ---
 下文是我在开发iOS APP两年后的一些经验总结.
 

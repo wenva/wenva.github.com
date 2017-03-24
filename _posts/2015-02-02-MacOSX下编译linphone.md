@@ -3,7 +3,7 @@ layout: post
 title: "MacOSX下编译linphone"
 date: 2015-02-02
 comments: false
-categories: iOS
+categories: VOIP
 ---
 Linphone是一个开源的VOIP框架，利用它提供的库能够快速构建一个VOIP的客户端. 虽然Linphone提供了iPhone版源码，但编译它还是遇到了不少问题，现将记录于此.
 

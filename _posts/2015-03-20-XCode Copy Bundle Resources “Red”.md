@@ -3,7 +3,7 @@ layout: post
 title: "XCode Copy Bundle Resources “Red”"
 date: 2015-03-20
 comments: false
-categories: iOS
+categories: OBJC
 ---
 本文将阐述XCode Copy Bundle Resources中为何会出现红色的文件资源.
 

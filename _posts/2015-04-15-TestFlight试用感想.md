@@ -3,7 +3,7 @@ layout: post
 title: "TestFlight试用感想"
 date: 2015-04-15
 comments: false
-categories: iOS
+categories: APPLE
 ---
 
 一提到iOS APP的测试，估计很多iOS开发者（当然也包括我），肯定在心里头暗骂“好坑”，确实对于一个未发布的APP来说，要测试它，根据以往我的经验，只有以下2个途径来安装APP:

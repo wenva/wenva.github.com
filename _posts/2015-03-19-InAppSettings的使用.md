@@ -3,7 +3,7 @@ layout: post
 title: "InAppSettings的使用"
 date: 2015-03-19
 comments: false
-categories: iOS
+categories: OBJC
 ---
 
 InAppSettings为APP提供了Settings的快捷化构建，只需少量代码就可以实现复杂的设置界面，下面来阐述如何使用InAppSettings.

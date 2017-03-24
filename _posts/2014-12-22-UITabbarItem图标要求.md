@@ -3,7 +3,7 @@ layout: post
 title: "UITabbarItem图标要求"
 date: 2014-12-22
 comments: false
-categories: iOS
+categories: OBJC
 ---
 ![image](http://www.2cto.com/uploadfile/2012/0915/20120915045908604.png)
 
