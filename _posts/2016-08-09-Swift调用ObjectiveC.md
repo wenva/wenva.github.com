@@ -3,7 +3,7 @@ layout: post
 title: "Swift调用ObjectiveC"
 date: 2016-08-09
 comments: false
-categories: iOS
+categories: OBJC
 ---
 
 Swift中调用OC代码，并不是直接import头文件，然后开始调用，而是需要进行配置，方法也很简单，步骤如下：

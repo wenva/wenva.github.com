@@ -3,7 +3,7 @@ layout: post
 title: "linphone源码解读之Filter"
 date: 2016-03-17
 comments: false
-categories: iOS
+categories: VOIP
 ---
 
 Filter是linphone源码的精髓，Filter可以比作过滤器，负责对数据进行不同功能的操作，如解码、编码、显示、滤噪等等. 往往一个流程需要很多个Filter来组成，只有经过一层层的过滤，才能得到【纯净】的数据. 比如视频接收显示流程，需要经过rtprecv、decoder、tee、jpegwriter、display几个Filter. 下面我们来详细地讲述Filter.

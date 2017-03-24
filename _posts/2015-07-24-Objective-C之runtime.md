@@ -3,7 +3,7 @@ layout: post
 title: "Objective-C之runtime"
 date: 2015-07-24
 comments: false
-categories: iOS
+categories: OBJC
 ---
 
 ![image](http://cc.cocimg.com/api/uploads/20141224/1419385503900732.jpg)

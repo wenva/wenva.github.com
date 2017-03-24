@@ -3,7 +3,7 @@ layout: post
 title: "gitlab之repos位置迁移"
 date: 2016-06-06
 comments: false
-categories: Git
+categories: GIT
 ---
 
 前段时间gitlab服务出现503错误，查看了下日志，发现是gitlab数据所在的挂载点空间已经满了无法写入，于是想把数据迁移到另一个挂载点上，查了下gitlab仓库数据是位于`/var/opt/gitlab/git-data`下，于是最直接的做法就是把git-data拷贝到新挂载点下，然后建立一个软连接到`/var/opt/gitlab`下，而实际测试发现会有问题. 后来通过查看gitlab.rb配置文件，发现git_data_dir选项，于是通过把git_data_dir指向新挂载点，发现还是有问题，后来通过[stackoverflow](http://stackoverflow.com/questions/19902417/change-the-data-directory-gitlab-to-store-repos-elsewhere)找到了正确的方法，现记录于此:

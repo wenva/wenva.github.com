@@ -3,7 +3,7 @@ layout: post
 title: "论linux下service的坑"
 date: 2016-08-12
 comments: false
-categories: linux
+categories: SHELL
 ---
 
 近日，通过service运行脚步来跑java程序，发现输出的中文都是?，而直接运行脚步又是正常的，感觉非常奇怪，于是通过`man service`查看

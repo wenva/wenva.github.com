@@ -3,7 +3,7 @@ layout: post
 title: "解决git的detached from临时分支问题"
 date: 2015-06-18
 comments: false
-categories: 技巧
+categories: GIT
 ---
 
 今天偶然发现git会出现detached from的分支, 导致很多commit未push到服务器，以至于其他同事clone的代码编译错误

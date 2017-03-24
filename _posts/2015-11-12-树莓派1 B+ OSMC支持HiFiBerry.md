@@ -3,7 +3,7 @@ layout: post
 title: "树莓派1 B+ OSMC支持HiFiBerry"
 date: 2015-11-12
 comments: false
-categories: 嵌入式
+categories: PI
 ---
 
 最新版本的OSMC已经完美地支持了HiFiBerry，大家只要进行相关设置就ok，不用aplay、/etc/modules各种折腾（我就这么过来的）

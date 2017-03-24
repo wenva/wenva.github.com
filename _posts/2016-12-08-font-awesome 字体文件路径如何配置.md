@@ -3,7 +3,7 @@ layout: post
 title: "font-awesome 字体文件路径如何配置"
 date: 2016-12-08
 comments: false
-categories: 前端
+categories: FRONT-END
 ---
 
 最近工程中有使用到font-awesome，其中涉及到font路径的配置纠结了我好长一段时间，经过探索发现，该路径是相对于css路径.
