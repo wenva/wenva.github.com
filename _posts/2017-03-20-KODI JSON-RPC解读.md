@@ -18,10 +18,10 @@ JSON-RPC顾名思义就是采用JSON进行RPC通信，那么它的[基本格式]
 
 ##### 请求(REQUEST)
 
-* URI：http://<your-ip>:<your-port>/jsonrpc
+* URI：http://host:port/jsonrpc
 * METHOD：POST
 * HEADER：ContentType:application/json
-* BODY: {"jsonrpc":"2.0", "method":"xxx","params":{},"id":xx },jsonrpc必须是2.0，这个与实际版本无关 method为具体方法，会在后面介绍，params为method对应的参数，若无，则可以不传 id是由客户端定义，用于标识客户端，服务器会返回相同的id（见响应）
+* BODY: {"jsonrpc":"2.0", "method":"xx", "params":{}, "id":xx},jsonrpc必须是2.0，这个与实际版本无关 method为具体方法，会在后面介绍，params为method对应的参数，若无，则可以不传 id是由客户端定义，用于标识客户端，服务器会返回相同的id（见响应）
 
 如：
 
