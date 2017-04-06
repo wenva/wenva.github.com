@@ -40,10 +40,18 @@ PS: 各个文件的含义可以查看README的说明，我也给出我的理解
 
 * cert.pem 公钥
 * prikey.pem 私钥
-* fullchain.pem CA证书
+* fullchain.pem CA证书信任链
 * chain.pem Nginx专用
 
 PS: 可以通过`cat cert.pem prikey.pem > server.pem`将私有和公用打包在一起，以供后续lighttpd配置使用.
+
+信任链（chain）即证书的信任关系，如A信任A1，A1信任A2，其中最顶级的节点就是根证书（root certificate），Let’s Encrypt就是直接隶属于root certificate. 
+
+```
+└── DST Root CA X3
+    └── Let's Encrypt Authority X3
+        └── smallmuou.xyz
+```
 
 ## 安装及配置lighttpd
 
