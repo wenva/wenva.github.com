@@ -40,8 +40,8 @@ PS: 各个文件的含义可以查看README的说明，我也给出我的理解
 
 * cert.pem 公钥
 * prikey.pem 私钥
-* fullchain.pem CA证书信任链
-* chain.pem Nginx专用
+* fullchain.pem CA证书信任链 (包含Root Certificate)
+* chain.pem 上一级CA证书（这里指Let's Encrypt）
 
 PS: 可以通过`cat cert.pem prikey.pem > server.pem`将私有和公用打包在一起，以供后续lighttpd配置使用.
 
