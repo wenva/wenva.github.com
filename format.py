@@ -46,7 +46,7 @@ for file in filelist:
             if (title!='---' and datestring!=''):
                 title=title[1:].strip(' ')
                 try:
-                    datetime=datetime.datetime.strptime(datestring, '%Y年%m月%d日')
+                    datetime=datetime.datetime.strptime(datestring, '%Y.%m.%d')
                 except:
                     datetime=datetime.datetime.strptime(datestring, '%B %d, %Y')
 
