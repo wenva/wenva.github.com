@@ -106,6 +106,7 @@ int g_count = 100; //全局变量
             ^{ NSLog(@"this is block 1:%i", num); }, //NSStackBlock
             nil];</pre>
 * 循环引用
+
  	<pre>
 	//如下代码将会导致循环引用
     self.block = ^{
