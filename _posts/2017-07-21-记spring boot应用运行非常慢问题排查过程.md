@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "记"spring boot应用运行非常慢"问题排查过程"
+title: "记spring boot应用运行非常慢问题排查过程"
 date: 2017-07-21
 comments: false
 categories: java
