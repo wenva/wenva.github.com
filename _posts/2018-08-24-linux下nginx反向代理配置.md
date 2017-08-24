@@ -8,7 +8,8 @@ categories: linux
 
 关于反向代理服务器，大家应该都有耳闻，形象地说就是增设的"前台"，所有访问都通过这个前台，不能直接访问内部服务器，从而实现了隐藏. 通过反向代理可以实现重定向、负载均衡等.
 
-* 1. 安装 pcre
+#### 1. 安装 pcre
+
 ```bash
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz
 ./configure
@@ -17,7 +18,7 @@ make install
 ```
 PS：debain 系可以直接安装 libpcre3-dev
 
-* 2. 安装 nginx
+#### 2. 安装 nginx
 
 ```bash
 wget http://nginx.org/download/nginx-1.13.4.tar.gz
@@ -29,7 +30,7 @@ make install
 ln -s /usr/local/nginx/sbin/nginx /usr/local/bin
 ```
 
-* 3. 运行nginx
+#### 3. 运行nginx
 
 ```bash
 nginx
@@ -41,14 +42,14 @@ nginx
 echo '/usr/local/lib' >> /etc/ld.so.conf.d/local.conf
 ```
 
-* 4. 添加用户组
+#### 4. 添加用户组
 
 ```bash
 groupadd nginx
 useradd -g nginx nginx
 ```
 
-* 5. 配置反向代理
+#### 5. 配置反向代理
 vim /usr/local/nginx/conf/nginx.conf
 
 ```bash
@@ -73,13 +74,13 @@ http {
 
 当我访问该代理服务器ip，则会转到www.baidu.com
 
-* 6. 停止 nginx
+#### 6. 停止 nginx
 若需要停止 nginx，则执行如下命令或ps & kill
 ```bash
 killall nginx
 ```
 
-* 7. 实例讲解
+#### 7. 实例讲解
 最后讲一个实用例子，一台主机www.example.com有三个服务，分别对应三个端口(80, 81, 82)，我可以申请3个域名，分别对应这三个服务，配置如下：
 
 test.example.com -> 代理服务器IP
