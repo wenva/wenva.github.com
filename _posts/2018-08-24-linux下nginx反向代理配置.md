@@ -6,6 +6,8 @@ comments: false
 categories: linux
 ---
 
+关于反向代理服务器，大家应该都有耳闻，简单地说就是一个公司的"前台"，所有访问都通过这个前台，实现了内部隐藏. 通过反向代理可以实现重定向及负载均衡.
+
 * 1. 安装 pcre
 ```bash
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz
@@ -56,10 +58,10 @@ pid        logs/nginx.pid;
 http {
     ...
     server {
+        server_name localhost;
         ...
         location / {
             proxy_pass http://www.baidu.com
-            proxy_set_header Host www.baidu.com
         }
         ...
     }
@@ -68,13 +70,50 @@ http {
 
 配置完后，重新加载`nginx -s reload`
 
-* 4. 停止 nginx
+当我访问该ip，则转到www.baidu.com
+
+* 6. 停止 nginx
 若需要停止 nginx，则执行如下命令或ps & kill
 ```bash
 killall nginx
 ```
 
 
+* 7. 使用例子
+最后讲一个实用例子，一台主机www.example.com有三个服务，分别对应三个端口(80, 81, 82)，这样我可以申请3个域名，分别对应这三个服务，配置如下
+
+test.example.com -> 代理服务器IP
+test1.example.com -> 代理服务器IP
+test2.example.com -> 代理服务器IP
+
+```bash
+    ...
+    server {
+        server_name test.example.com;
+        ...
+        location / {
+            proxy_pass http://www.example.com;
+        }
+        ...
+    }
+    server {
+        server_name test1.example.com;
+        ...
+        location / {
+            proxy_pass http://www.example.com;
+        }
+        ...
+    }
+    server {
+        server_name test2.example.com;
+        ...
+        location / {
+            proxy_pass http://www.example.com;
+        }
+        ...
+    }
+```
+这样我就可以不用为每个服务购买一台主机
 
 
 
