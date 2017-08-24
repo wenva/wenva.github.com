@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "linux下nginx反向代理配置"
-date: 2018-08-24
+date: 2017-08-24
 comments: false
 categories: linux
 ---
