@@ -6,7 +6,7 @@ comments: false
 categories: linux
 ---
 
-关于反向代理服务器，大家应该都有耳闻，简单地说就是一个公司的"前台"，所有访问都通过这个前台，实现了内部隐藏. 通过反向代理可以实现重定向及负载均衡.
+关于反向代理服务器，大家应该都有耳闻，形象地说就是增设的"前台"，所有访问都通过这个前台，不能直接访问内部服务器，从而实现了隐藏. 通过反向代理可以实现重定向、负载均衡等.
 
 * 1. 安装 pcre
 ```bash
@@ -15,6 +15,7 @@ wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz
 make
 make install
 ```
+PS：debain 系可以直接安装 libpcre3-dev
 
 * 2. 安装 nginx
 
@@ -70,7 +71,7 @@ http {
 
 配置完后，重新加载`nginx -s reload`
 
-当我访问该ip，则转到www.baidu.com
+当我访问该代理服务器ip，则会转到www.baidu.com
 
 * 6. 停止 nginx
 若需要停止 nginx，则执行如下命令或ps & kill
@@ -78,9 +79,8 @@ http {
 killall nginx
 ```
 
-
-* 7. 使用例子
-最后讲一个实用例子，一台主机www.example.com有三个服务，分别对应三个端口(80, 81, 82)，这样我可以申请3个域名，分别对应这三个服务，配置如下
+* 7. 实例讲解
+最后讲一个实用例子，一台主机www.example.com有三个服务，分别对应三个端口(80, 81, 82)，我可以申请3个域名，分别对应这三个服务，配置如下：
 
 test.example.com -> 代理服务器IP
 test1.example.com -> 代理服务器IP
@@ -92,7 +92,7 @@ test2.example.com -> 代理服务器IP
         server_name test.example.com;
         ...
         location / {
-            proxy_pass http://www.example.com;
+            proxy_pass http://www.example.com:80;
         }
         ...
     }
@@ -100,7 +100,7 @@ test2.example.com -> 代理服务器IP
         server_name test1.example.com;
         ...
         location / {
-            proxy_pass http://www.example.com;
+            proxy_pass http://www.example.com:81;
         }
         ...
     }
@@ -108,7 +108,7 @@ test2.example.com -> 代理服务器IP
         server_name test2.example.com;
         ...
         location / {
-            proxy_pass http://www.example.com;
+            proxy_pass http://www.example.com:82;
         }
         ...
     }
