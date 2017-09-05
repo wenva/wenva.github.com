@@ -112,13 +112,6 @@ sudo tcpdump -i en0 port 80 -xx
 
 PS：TCP头之后就是DATA，即
 ```bash
-smou:Packages $ echo '4745 5420 2f20 4854 5450 2f31 2e31
-0d0a 486f 7374 3a20 7777 772e 762d 6a75
-2e63 6f6d 2e63 6e0d 0a55 7365 722d 4167
-656e 743a 2063 7572 6c2f 372e 3531 2e30
-0d0a 4163 6365 7074 3a20 2a2f 2a0d 0a0d
-0a'|xxd -r -p
-
 GET / HTTP/1.1
 Host: www.v-ju.com.cn
 User-Agent: curl/7.51.0
@@ -153,4 +146,4 @@ tcpdump -i eth0 port 6050 -xx
 |Destination Port|目的端口|17a2 = 6050
 |Length|长度包含头部+数据|000a = 10 = 8（UDP头）+ 2(数据)
 
-PS: UDP之后就是DATA，本例子DATA为0d0a，即\r\n
+PS: UDP之后就是DATA，即\r\n
