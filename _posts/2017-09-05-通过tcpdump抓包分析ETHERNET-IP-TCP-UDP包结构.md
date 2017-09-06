@@ -147,4 +147,4 @@ tcpdump -i eth0 port 6050 -xx
 |Destination Port|目的端口|17a2 = 6050
 |Length|长度包含头部+数据|000a = 10 = 8（UDP头）+ 2(数据)
 
-PS: UDP之后就是DATA，即\r\n
+PS: UDP头之后就是DATA，即\r\n
