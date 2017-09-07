@@ -12,6 +12,10 @@ asterisk是一个开源的sip服务器，默认情况，asterisk是从sip.conf�
 
 可以参考其他文档安装mysql，并配置用户密码
 
+```bash
+mysqladmin -uroot password 'new password'
+```
+
 #### 步骤2 - 创建数据库及表
 
 ```sql
@@ -120,7 +124,7 @@ make menuconfig
 勾选 addons->res_config_mysql，并重新make && make install
 
 #### 步骤4 - 配置res_config_mysql.conf
-
+vim /etc/asterisk/res_config_mysql.conf
 ```
 [general]
 dbhost = 127.0.0.1
@@ -131,8 +135,7 @@ dbport = 3306
 dbsock = /var/lib/mysql/mysql.sock
 dbcharset = utf8
 ```
-PS: dbname数据库名字， dbsock为mysql的本地sock文件，需要根据自己环境变更
-
+ps: dbname数据库名字， dbsock为mysql的本地sock文件，需要根据自己环境变更
 
 #### 步骤5 - 配置extconfig.conf
 
@@ -140,14 +143,14 @@ vim /etc/asterisk/extconfig.conf
 ```
 sippeers => mysql,general,sippeers
 ```
-PS: general是对应res_config_mysql.conf的段名（中括号部分）， sippeers为数据库表名
+ps: general是对应res_config_mysql.conf的段名（中括号部分）， sippeers为数据库表名
 
 #### 步骤6 - 插入用户信息
 
 ```sql
 INSERT INTO sippeers (name, host, secret) values ('111', 'dynamic', '111');
 ```
-PS: name用户名，secret密码，host必须指定为dynamic，否则注册不了
+ps: name用户名，secret密码，host必须指定为dynamic，否则注册不了
 
 #### 步骤7 - 启动asterisk
 
