@@ -8,11 +8,11 @@ categories: sip
 
 asterisk是一个开源的sip服务器，默认情况，asterisk是从sip.conf来配置peers，如果peers有变更或者数量比较大，就不能采用这种方式，asterisk提供的realtime方式，支持数据库保存peers，有包括mysql、sqlite、postgres等，本文将指导如何进行mysql配置.
 
-### 步骤1 - 安装并配置mysql
+#### 步骤1 - 安装并配置mysql
 
 可以参考其他文档安装mysql，并配置用户密码
 
-### 步骤2 - 创建数据库及表
+#### 步骤2 - 创建数据库及表
 
 ```sql
 CREATE DATABASE asterisk;
@@ -112,14 +112,14 @@ CREATE TABLE IF NOT EXISTS `sippeers` (
 ) ENGINE=MyISAM;
 ```
 
-### 步骤3 - 编译asterisk的mysql模块
+#### 步骤3 - 编译asterisk的mysql模块
 
 ```bash
 make menuconfig
 ```
 勾选 addons->res_config_mysql，并重新make && make install
 
-### 步骤4 - 配置res_config_mysql.conf
+#### 步骤4 - 配置res_config_mysql.conf
 
 ```
 [general]
@@ -134,7 +134,7 @@ dbcharset = utf8
 PS: dbname数据库名字， dbsock为mysql的本地sock文件，需要根据自己环境变更
 
 
-### 步骤5 - 配置extconfig.conf
+#### 步骤5 - 配置extconfig.conf
 
 vim /etc/asterisk/extconfig.conf
 ```
@@ -142,14 +142,14 @@ sippeers => mysql,general,sippeers
 ```
 PS: general是对应res_config_mysql.conf的段名（中括号部分）， sippeers为数据库表名
 
-### 步骤6 - 插入用户信息
+#### 步骤6 - 插入用户信息
 
 ```sql
 INSERT INTO sippeers (name, host, secret) values ('111', 'dynamic', '111');
 ```
 PS: name用户名，secret密码，host必须指定为dynamic，否则注册不了
 
-### 步骤7 - 启动asterisk
+#### 步骤7 - 启动asterisk
 
 ```bash
 asterisk
