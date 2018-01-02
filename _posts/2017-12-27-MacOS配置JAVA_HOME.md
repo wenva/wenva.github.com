@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "MacOS配置JAVA_HOME"
-date: 2018-12-27
+date: 2017-12-27
 comments: false
 categories: 运维
 ---
