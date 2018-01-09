@@ -12,6 +12,25 @@ categories: SIP
 
 ```c
 
+static enum check_auth_result check_user_full(struct sip_pvt *p, struct sip_request *req,
+                          int sipmethod, const char *uri, enum xmittype reliable,
+                          struct ast_sockaddr *addr, struct sip_peer **authpeer)
+{
+    res = check_peer_ok(p, name, req, sipmethod, addr,
+            authpeer, reliable, calleridname, uri2);
+}
+
+static enum check_auth_result check_peer_ok(struct sip_pvt *p, char *of,
+    struct sip_request *req, int sipmethod, struct ast_sockaddr *addr,
+    struct sip_peer **authpeer,
+    enum xmittype reliable, char *calleridname, char *uri2)
+{
+    if (sipmethod == SIP_SUBSCRIBE) {
+        peer = sip_find_peer(of, NULL, TRUE, FINDALLDEVICES, FALSE, 0);
+    }
+}
+
+
 struct sip_peer *sip_find_peer(const char *peer, struct ast_sockaddr *addr, int realtime, int which_objects, int devstate_only, int transport)
 {
     return sip_find_peer_full(peer, addr, NULL, realtime, which_objects, devstate_only, transport);
