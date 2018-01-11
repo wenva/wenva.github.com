@@ -10,7 +10,20 @@ categories: SIP
 
 以下给出被呼叫调用栈（chan_sip.c），代码是基于13.2.1，不同版本会有些差异
 
+
+* sipsock_read（UDP，TCP使用_sip_tcp_helper_thread）
+    * 读取socket数据并放入req.data
+    * 读取socket地址并作为handle_request_do第二个参数传入
+* handle_request_do
+    * 判断是否是debug ip, sip_debug_test_addr, 并置req->debug=1，后续将打印该ip的所有信令
+    * 解析内容判断合法性，并放入req->method、req->header、req->line (body)
+    * 查找或创建会话sip_pvt
+
+
 ```c
+
+
+
 
 static enum check_auth_result check_user_full(struct sip_pvt *p, struct sip_request *req,
                           int sipmethod, const char *uri, enum xmittype reliable,
