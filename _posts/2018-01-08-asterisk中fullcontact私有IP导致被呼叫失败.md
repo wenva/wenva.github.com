@@ -26,7 +26,9 @@ categories: SIP
     * 根据Method进行路由（handle_request_xxxxx）
 
 
+#### 呼叫
 
+handle_request_invite -> ast_pbx_start -> __ast_pbx_run -> ast_spawn_extension -> pbx_extension_helper -> pbx_exec -> app.execute -> dial_exec (app_dial.c)  -> dial_exec_full .... -> ast_call -> sip_call
 
 
 #### 读取数据库
