@@ -11,7 +11,7 @@ categories: SIP
 以下给出被呼叫调用栈（chan_sip.c），代码是基于13.2.1，不同版本会有些差异
 
 * 
-* CSeq 序列号，用于标识请求，服务器会原样返回
+* CSeq 序列号，用于标识请求，服务器会原样返回，且需要呈现递增状态
 
 
 * sipsock_read（UDP，TCP使用_sip_tcp_helper_thread）
@@ -22,7 +22,8 @@ categories: SIP
     * 解析内容判断合法性，并放入req->method、req->header、req->line (body)
     * 查找或创建会话sip_pvt
 * handle_incoming
-* handle_response
+    * 如果是客户端回复包（Trying、Ringing等）调用handle_response
+    * 根据Method进行路由（handle_request_xxxxx）
 * 
 
 ```c
