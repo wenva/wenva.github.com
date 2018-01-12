@@ -24,7 +24,14 @@ categories: SIP
 * handle_incoming
     * 如果是客户端回复包（Trying、Ringing等）调用handle_response
     * 根据Method进行路由（handle_request_xxxxx）
-* 
+
+
+
+
+
+#### 读取数据库
+
+* sip_find_peer_full -> realtime_peer -> realtime_peer_by_name -> ast_load_realtime -> ast_load_realtime_fields -> ast_load_realtime_all_fields -> mysql_engine.realtime_func (res_config_mysql.c) -> realtime_mysql
 
 ```c
 
