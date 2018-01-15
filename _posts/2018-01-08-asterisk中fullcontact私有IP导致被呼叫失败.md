@@ -28,12 +28,18 @@ categories: SIP
 
 #### 呼叫
 
-handle_request_invite -> ast_pbx_start -> __ast_pbx_run -> ast_spawn_extension -> pbx_extension_helper -> pbx_exec -> app.execute -> dial_exec (app_dial.c)  -> dial_exec_full .... -> ast_call -> sip_call
+```c
+handle_request_invite -> ast_pbx_start -> __ast_pbx_run -> ast_spawn_extension -> pbx_extension_helper -> pbx_exec -> app.execute -> dial_exec (app_dial.c)  -> dial_exec_full -> ast_request -> tech.requester -> sip_request_call
+```
+
+ast_exists_extension -> pbx_extension_helper -> dial_exec_full -> ast_call -> tech.call -> sip_call
 
 
 #### 读取数据库
 
-* sip_find_peer_full -> realtime_peer -> realtime_peer_by_name -> ast_load_realtime -> ast_load_realtime_fields -> ast_load_realtime_all_fields -> mysql_engine.realtime_func (res_config_mysql.c) -> realtime_mysql
+```c
+sip_find_peer_full -> realtime_peer -> realtime_peer_by_name -> ast_load_realtime -> ast_load_realtime_fields -> ast_load_realtime_all_fields -> mysql_engine.realtime_func (res_config_mysql.c) -> realtime_mysql
+```
 
 ```c
 
