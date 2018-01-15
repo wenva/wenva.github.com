@@ -6,7 +6,7 @@ comments: false
 categories: SIP
 ---
 
-这几天阅读了下asterisk sip部分的源码（基于13.3.2版本），现梳理如下（代码只列出关键点）:
+这几天阅读了下asterisk channels/chan_sip.c部分的源码（基于13.3.2版本），现梳理如下（代码只列出关键点）:
 
 ### 1. 模块装(卸)载
 
