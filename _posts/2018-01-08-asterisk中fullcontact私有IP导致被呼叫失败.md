@@ -8,44 +8,7 @@ categories: SIP
 
 最近发现某些注册到asterisk的SIP客户端无法被呼叫，抓包确定是由于asterisk往私有IP发送数据，通过对比发现这些客户端发送的SIP信息Contact字段是私有IP，google了下相关资料并未找到解决方法，于是跟踪了下代码，找出了原因，现梳理如下：
 
-以下给出被呼叫调用栈（chan_sip.c），代码是基于13.2.1，不同版本会有些差异
-
-* 
-* CSeq 序列号，用于标识请求，服务器会原样返回，且需要呈现递增状态
-
-
-* sipsock_read（UDP，TCP使用_sip_tcp_helper_thread）
-    * 读取socket数据并放入req.data
-    * 读取socket地址并作为handle_request_do第二个参数传入
-* handle_request_do
-    * 判断是否是debug ip, sip_debug_test_addr, 并置req->debug=1，后续将打印该ip的所有信令
-    * 解析内容判断合法性，并放入req->method、req->header、req->line (body)
-    * 查找或创建会话sip_pvt
-* handle_incoming
-    * 如果是客户端回复包（Trying、Ringing等）调用handle_response
-    * 根据Method进行路由（handle_request_xxxxx）
-
-
-#### 呼叫
-
 ```c
-handle_request_invite -> ast_pbx_start -> __ast_pbx_run -> ast_spawn_extension -> pbx_extension_helper -> pbx_exec -> app.execute -> dial_exec (app_dial.c)  -> dial_exec_full -> ast_request -> tech.requester -> sip_request_call
-```
-
-ast_exists_extension -> pbx_extension_helper -> dial_exec_full -> ast_call -> tech.call -> sip_call
-
-
-#### 读取数据库
-
-```c
-sip_find_peer_full -> realtime_peer -> realtime_peer_by_name -> ast_load_realtime -> ast_load_realtime_fields -> ast_load_realtime_all_fields -> mysql_engine.realtime_func (res_config_mysql.c) -> realtime_mysql
-```
-
-```c
-
-
-
-
 static enum check_auth_result check_user_full(struct sip_pvt *p, struct sip_request *req,
                           int sipmethod, const char *uri, enum xmittype reliable,
                           struct ast_sockaddr *addr, struct sip_peer **authpeer)
@@ -70,7 +33,6 @@ struct sip_peer *sip_find_peer(const char *peer, struct ast_sockaddr *addr, int 
     return sip_find_peer_full(peer, addr, NULL, realtime, which_objects, devstate_only, transport);
 }
 
-
 static struct sip_peer *sip_find_peer_full(const char *peer, struct ast_sockaddr *addr, char *callbackexten, int realtime, int which_objects, int devstate_only, int transport)
 {
     ...
@@ -80,8 +42,6 @@ static struct sip_peer *sip_find_peer_full(const char *peer, struct ast_sockaddr
     }
     ...
 }
-
-
 
 static struct sip_peer *realtime_peer(const char *newpeername, struct ast_sockaddr *addr, char *callbackexten, int devstate_only, int which_objects)
 {
