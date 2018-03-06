@@ -16,8 +16,10 @@ Mem:       8058056    3799232    4258824          0       6704      66812
 Swap:            0          0          0
 ```
 
-buffers：用于存储页、块信息，如文件属性、文件列表等
-cached：用于存放文件内容
+##### 区别
+
+* buffers：用于存储页、块信息，如文件属性、inode等；通过find查找的结果会缓存至buffers
+* cached：用于存放文件内容，包括了tmpfs、共享内存、nmap等；打开一个大文件，文件内容会缓存到cached
 
 ##### 清除方法
 
@@ -35,4 +37,10 @@ echo 2 > /proc/sys/vm/drop_caches
 ```bash
 echo 2 > /proc/sys/vm/drop_caches
 ```
+
+##### 哪些情况无法清除
+
+* tmpfs中，文件未删除，则cached无法释放
+* 共享内存未释放，则无法清除
+* mmap映射的内存未释放，则无法清除
 
