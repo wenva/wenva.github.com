@@ -35,12 +35,12 @@ echo 2 > /proc/sys/vm/drop_caches
 
 * 同时清除cached和buffers
 ```bash
-echo 2 > /proc/sys/vm/drop_caches
+echo 3 > /proc/sys/vm/drop_caches
 ```
 
 ##### 哪些情况无法清除
 
 * tmpfs中，文件未删除，则cached无法释放
-* 共享内存未释放，则无法清除
-* mmap映射的内存未释放，则无法清除
+* 共享内存未释放，则cached无法释放
+* nmap映射的内存未释放，则cached无法释放
 
