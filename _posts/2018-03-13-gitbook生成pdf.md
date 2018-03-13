@@ -6,13 +6,11 @@ comments: false
 categories: 工具
 ---
 
+
+
 ```bash
-# 1. 下载安装Calibre应用
-https://calibre-ebook.com/
-
-# 2. 建立软链
-sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
-
-# 3. 进入gitbook工程目录，执行gitbook pdf
+1. 下载安装Calibre应用 https://calibre-ebook.com/
+2. sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
+3. 进入gitbook工程目录，执行gitbook pdf
 gitbook pdf . hello.pdf
 ```
