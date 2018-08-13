@@ -56,6 +56,8 @@ tshark -X lua_script:xxx.lua
 ```
 PS: xxx.lua可以带路径，但不能用~
 
+PS: init.lua同样适用于命令行，若init.lua已经配置，则不能用-X再次指定，否则会报存在2个一样的协议
+
 ### 编写lua
 
 如下是模板代码，可以在此基础上进行扩展
