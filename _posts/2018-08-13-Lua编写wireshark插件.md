@@ -12,6 +12,27 @@ categories: 技巧
 
 wireshark需要支持Lua，可以打开Wireshark，进入关于界面，若带有"with Lua x.x.x"，则表示支持，否则请升级; 命令行方式 `tshark -v`
 
+```bash
+TShark (Wireshark) 2.2.3 (v2.2.3-0-g57531cd)
+
+Copyright 1998-2016 Gerald Combs <gerald@wireshark.org> and contributors.
+License GPLv2+: GNU GPL version 2 or later <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Compiled (64-bit) with libpcap, without POSIX capabilities, with GLib 2.36.0,
+with zlib 1.2.5, with SMI 0.4.8, with c-ares 1.12.0, with `lua 5.2.4`, with GnuTLS
+2.12.19, with Gcrypt 1.5.0, with MIT Kerberos, with GeoIP.
+
+Running on Mac OS X 10.12.6, build 16G29 (Darwin 16.7.0), with locale
+C/UTF-8/C/C/C/C, with libpcap version 1.8.1 -- Apple version 67.60.1, with
+GnuTLS 2.12.19, with Gcrypt 1.5.0, with zlib 1.2.8.
+Intel(R) Core(TM) i5-4258U CPU @ 2.40GHz (with SSE4.2)
+
+Built using llvm-gcc 4.2.1 (Based on Apple Inc. build 5658) (LLVM build
+2336.9.00).
+```
+
 ### 配置
 
 * 界面
