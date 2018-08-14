@@ -43,6 +43,8 @@ nginx
 echo '/usr/local/lib' >> /etc/ld.so.conf.d/local.conf
 ```
 
+若遇到"nginx: [emerg] getpwnam("nginx") failed"，则进行第4步
+
 #### 4. 添加用户组
 
 ```bash
