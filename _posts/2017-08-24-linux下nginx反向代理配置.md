@@ -12,11 +12,13 @@ categories: linux
 
 ```bash
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz
+tar xzvf pcre-8.41.tar.gz
+cd pcre-8.41
 ./configure
 make
 make install
 ```
-PS：debain 系可以直接安装 libpcre3-dev
+PS：debain 系可以直接安装 libpcre3-dev；如提示确实c++编译器，`yum install -y gcc-c++`
 
 #### 2. 安装 nginx
 
@@ -35,7 +37,6 @@ ln -s /usr/local/nginx/sbin/nginx /usr/local/bin
 ```bash
 nginx
 ```
-
 若遇到找不到 pcre 动态库，则将/usr/local/lib加入系统动态库
 
 ```bash
