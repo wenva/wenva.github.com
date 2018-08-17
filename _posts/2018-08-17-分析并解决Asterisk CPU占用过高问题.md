@@ -6,7 +6,7 @@ comments: false
 categories: SIP
 ---
 
-现象：近来，发现Asterisk SIP服务占用经常CPU 100%以上，基本在服务启动1个小时后就会出现，但重启服务后就恢复正常
+现象：近来，发现Asterisk SIP服务经常占用CPU 100%以上，而且都在服务启动1个小时后出现，但重启服务后就恢复正常
 
 初步分析：通过tshark对网络发包测试，并未发现有明显变化，因此不是请求量变大引发的CPU紧张（从重启服务恢复正常也可以证实），因此可以确定是服务内部的问题，得益于 [《Why does Asterisk consume 100% CPU?》](https://moythreads.com/wordpress/2009/05/06/why-does-asterisk-consume-100-cpu/) 这篇文章，我对asterisk服务进行了深度剖析，过程如下
 
@@ -124,7 +124,7 @@ ao2_find是根据name从任务队列中查找，一旦这个队列非常大，�
 ### 步骤4：解决代码BUG
 通过分析代码发现如下关系： peer->endpoint->route->subscription->mailbox
 
-mailbox就是"struct ast_taskprocessor"即任务对象，因此可以推断应该是这个流程中有对象内存泄露了导致mailbox没有从任务队列中移除，通过一级一级分析，发现是peer内存泄露了，看如下代码
+mailbox就是"struct ast_taskprocessor"即任务对象，因此可以推断应该是这个依赖链中有对象内存泄露了导致mailbox没有从任务队列中移除，通过一级一级分析，发现是peer内存泄露了，看如下代码
 
 ```c
     } else if (!strcasecmp(curi, "*") || !expire) { /* Unregister this peer */
@@ -150,8 +150,8 @@ mailbox就是"struct ast_taskprocessor"即任务对象，因此可以推断应�
 ```
 peer_db是sip_find_peer_by_db得到的，而sip_find_peer_by_db是有'加引用'的，因此在没用peer_db时需要执行'去引用'，因此此处需要加sip_unref_peer(peer_db, "remove")
 
-当然代码中还有其他地方也是类似，这里不一一列出，改完所有泄露，编译重新运行发现taskprocessors不会出现不断增加，维持在30个以内，通过几个小时的运行，CPU没有增高，此问题得到的最终解决。
+当然代码中还有其他地方也是类似，这里不一一列出，改完所有泄露，重新编译运行发现taskprocessors不会不断增加，维持在30个以内，通过几个小时的运行，CPU没有增高，此问题得到的最终解决。
 
 ### 总结
 
-【授之以鱼，不如授之以渔】以上只是一种CPU过高的原因，很可能各位遇到的问题不一样，但都可以借鉴上面步骤对问题进行排查。
+【授之以鱼，不如授之以渔】以上只是一种CPU过高的原因，各位很可能遇到的问题不一样，但都可以借鉴上面步骤对问题进行排查。
