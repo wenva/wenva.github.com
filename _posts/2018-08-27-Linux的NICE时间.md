@@ -6,7 +6,7 @@ comments: false
 categories: linux
 ---
 
-使用top命令时，会显示一个ni值，一直没留意，今特地研究了下：NICE是指进程了优先级，从-20到19，值越高，优先级越低；NICE TIME是指NICE大于0的进程所占用CPU时间百分比
+使用top命令时，会显示一个ni值，一直没留意，今特地研究了下：NICE是指进程的优先级，从-20到19，值越高，优先级越低；NICE TIME是指NICE大于0的进程所占用CPU时间百分比
 
 ```bash
 top - 14:53:27 up 58 min,  2 users,  load average: 0.22, 1.24, 1.60
@@ -23,13 +23,13 @@ KiB Swap:  2097148 total,  2096884 free,      264 used.   319240 avail Mem
 
 PS: 从以上可以看出NICE TIME=35.5%, loop.sh进程优先级为2
 
-进程优先级默认是继承父进程，一般为0，若要修改优先级，可以通过nice命令
+进程优先级是继承父进程，一般为0，若要修改优先级，可以通过nice命令
 
 ```bash
 # 优先级修改为2
 nice -n 2 ./loop.sh
 
-# 未指定，则修改为10
+# 未指定则修改为10
 nice ./loop.sh
 
 # 优先级修改为-2
