@@ -23,7 +23,7 @@ KiB Swap:  2097148 total,  2096884 free,      264 used.   319240 avail Mem
 
 PS: 从以上可以看出NICE TIME=35.5%, loop.sh进程优先级为2
 
-进程默认优先级是0，若要修改优先级，可以通过nice命令
+进程优先级默认是继承父进程，一般为0，若要修改优先级，可以通过nice命令
 
 ```bash
 # 优先级修改为2
@@ -34,4 +34,11 @@ nice ./loop.sh
 
 # 优先级修改为-2
 nice -n -2 ./loop.sh
+```
+
+
+若要更改一个正在执行的进程
+
+```bash
+renice -n 0 10877
 ```
