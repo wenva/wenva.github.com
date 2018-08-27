@@ -36,7 +36,6 @@ nice ./loop.sh
 nice -n -2 ./loop.sh
 ```
 
-
 若要更改一个正在执行的进程
 
 ```bash
