@@ -21,7 +21,7 @@ KiB Swap:  2097148 total,  2096884 free,      264 used.   319240 avail Mem
 10884 root      20   0  161972   2168   1520 R   6.2  0.1   0:00.16 top
 ```
 
-PS: 从以上可以看出NICE TIME=35.5%, loop.sh进程优先级为2，而实际优先级PR为22
+PS: 从以上可以看出NICE TIME=35.5%, loop.sh进程NICE为2，而实际优先级PR为22 （PR应该是从0开始，20对应NICE的0，这样NICE=-20，PR刚好为0）
 
 进程优先级是继承父进程，一般为0，若要修改优先级，可以通过nice命令
 
