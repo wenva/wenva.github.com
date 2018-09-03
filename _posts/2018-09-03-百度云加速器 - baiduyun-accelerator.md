@@ -10,7 +10,7 @@ categories: 工具
 
 ### 使用
 
-下载baiduyun-accelerator至本地
+下载baiduyun-accelerator至本地: https://github.com/smallmuou/baiduyun-accelerator
 
 ```bash
 /bin/bash baiduyun-accelerator redirection-url [split-number]
