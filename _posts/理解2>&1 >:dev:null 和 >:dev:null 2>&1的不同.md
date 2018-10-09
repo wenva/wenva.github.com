@@ -1,0 +1,50 @@
+---
+layout: post
+title: "理解2>&1 >file 和 >file 2>&1的不同"
+date: 2018-10-09
+comments: false
+categories: shell
+---
+
+要理解2>&1 >/dev/null 和 >/dev/null 2>&1的不同，需要知道以下几点:
+
+```
+* 命令执行的时候，默认会打开3个句柄，0 - stdin（键盘），1 - stdout（屏幕）， 2 - stderr
+* M>&N 即 M句柄也指向N句柄所执行的文件
+* >/dev/null 等同于 1>/dev/null，即将句柄1指向/dev/null文件
+* 命令从句柄0读取数据；往句柄1输出信息；往句柄2输出错误
+```
+
+#### 2>&1 >/dev/null
+
+步骤1: 2>&1
+```
+1 -------> stdout
+2 ---x---> stderr
+2 -------> 1 -------> stdout 2句柄指向1句柄所指向的stdout，即错误输出到stdout
+```
+
+步骤2: >/dev/null
+```
+1 ---x---> stdout
+1 -------> /dev/null 
+2 -------> stdout
+```
+PS: 句柄1输出到/dev/null，句柄2输出到stdout（屏幕）
+
+#### >/dev/null 2>&1
+
+步骤1: >/dev/null
+```
+1 ---x---> stdout
+1 -------> /dev/null  句柄1指向/dev/null
+2 -------> stderr
+```
+
+步骤2: 2>&1
+```
+1 -------> /dev/null
+2 ---x---> stderr
+2 -------> 1 -------> /dev/null 即句柄2执行句柄1所指向的/dev/null
+```
+PS: 句柄1和句柄2都指向/dev/null
