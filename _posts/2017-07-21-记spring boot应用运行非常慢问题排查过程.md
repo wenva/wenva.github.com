@@ -3,7 +3,7 @@ layout: post
 title: "记spring boot应用运行非常慢问题排查过程"
 date: 2017-07-21
 comments: false
-categories: java
+categories: 后端
 ---
 
 项目上遇到一个问题『Spring Boot应用运行非常慢』，一个正常只要运行3分钟的应用在我们的自己服务器上需要运行10多分钟，针对这个问题我们做过了一些尝试
