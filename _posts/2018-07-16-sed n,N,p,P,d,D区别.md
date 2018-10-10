@@ -3,7 +3,7 @@ layout: post
 title: "sed n,N,p,P,d,D区别"
 date: 2018-07-16
 comments: false
-categories: Linux
+categories: SHELL
 ---
 
 ```
