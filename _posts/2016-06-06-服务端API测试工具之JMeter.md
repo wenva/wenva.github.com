@@ -3,7 +3,7 @@ layout: post
 title: "服务端API测试工具之JMeter"
 date: 2016-06-06
 comments: false
-categories: BACK-END
+categories: 后端
 ---
 
 在互联化的时代浪潮里，服务端API变得无处不在，几乎每个公司都有会提供服务API给第三方调用，而服务API的测试也就提上日程，本文我们将介绍API测试工具JMeter，[JMeter](http://jmeter.apache.org)是Apache组织的开放源代码项目，它是功能和性能测试的工具. 本文将对Jmeter进行比较系统化的阐述.

@@ -3,7 +3,7 @@ layout: post
 title: "Sublime Text好玩的快捷键"
 date: 2017-08-24
 comments: false
-categories: edit
+categories: 工具
 ---
 
 Sublime Text可谓是文本编辑的神奇，类似于vim，玩遛它并非一朝，可能你也和笔者一样，是一个Sublime Text新手，作为新手，你必须掌握一些神奇的快捷键，这样你才会慢慢爱上它。本文将对一些常用快捷键进行归纳，罗列如下. 当然笔者使用的是MAC系统，因此以下快捷键是针对MAC。

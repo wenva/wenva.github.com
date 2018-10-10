@@ -3,7 +3,7 @@ layout: post
 title: "MACOSX写入img到sd卡"
 date: 2015-11-11
 comments: false
-categories: PI
+categories: 树莓派
 ---
 
 最近在整树莓派的声卡，又需要重新装系统，这里记录下如何将img 写入到sd卡

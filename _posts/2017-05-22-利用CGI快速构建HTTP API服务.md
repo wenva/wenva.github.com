@@ -3,7 +3,7 @@ layout: post
 title: "利用CGI快速构建HTTP API服务"
 date: 2017-05-22
 comments: false
-categories: 框架
+categories: 后端
 ---
 
 为了保证跨平台访问，最好的方式就是通过HTTP API方式，而HTTP API框架很多，有web.py、flask，但缺乏灵活性，只能用某种特定语言编写；而CGI则是语言无关，利用stdin、stdout进行数据传输，那么如何构建.

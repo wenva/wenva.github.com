@@ -3,7 +3,7 @@ layout: post
 title: "asterisk源码解读 - SIP"
 date: 2018-01-15
 comments: false
-categories: SIP
+categories: 音视频
 ---
 
 这几天阅读了下asterisk channels/chan_sip.c部分的源码（基于13.3.2版本），现梳理如下（代码只列出关键点）:

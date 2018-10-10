@@ -3,7 +3,7 @@ layout: post
 title: "linphone-iphone代码解读"
 date: 2015-02-05
 comments: false
-categories: VOIP
+categories: 音视频
 ---
 linphone-iphone是Linphone官方提供的iPhone版本源码，源代码结构可谓是相当庞大，不得不做些记录，现记录与此.
 

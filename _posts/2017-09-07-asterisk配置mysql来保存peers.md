@@ -3,7 +3,7 @@ layout: post
 title: "asterisk配置mysql来保存peers"
 date: 2017-09-07
 comments: false
-categories: sip
+categories: 音视频
 ---
 
 asterisk是一个开源的sip服务器，默认情况，asterisk是从sip.conf来配置peers，如果peers有变更或者数量比较大，就不能采用这种方式，asterisk提供的realtime方式，支持数据库实时保存及读取peers，数据库支持mysql、sqlite、postgres等，本文将指导如何进行mysql配置.

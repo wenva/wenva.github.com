@@ -3,7 +3,7 @@ layout: post
 title: "asterisk中fullcontact私有IP导致被呼叫失败"
 date: 2018-01-08
 comments: false
-categories: SIP
+categories: 音视频
 ---
 
 最近发现某些注册到asterisk的SIP客户端无法被呼叫，抓包确定是由于asterisk往私有IP发送数据，通过对比发现这些客户端发送的SIP信息Contact字段是私有IP，google了下相关资料并未找到解决方法，于是跟踪了下代码，找出了原因，现梳理如下：

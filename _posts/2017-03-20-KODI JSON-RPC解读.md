@@ -3,7 +3,7 @@ layout: post
 title: "KODI JSON-RPC解读"
 date: 2017-03-20
 comments: false
-categories: PI
+categories: 树莓派
 ---
 
 大概一年前就开始关注KODI了，确实是个非常不错的开源项目，KODI提供很好的操作界面，但作为一个命令行控或者是没有显示屏的树莓派，我希望能够通过命令行对其进行控制，比如播放、暂停、静音等等. 于是去搜索了下，发现有个JSON-RPC，他是kODI官网推出的，方便其他开发者对接，到目前为止已经更新到v8，可以点击[这里查看](http://kodi.wiki/view/JSON-RPC_API)。这里将为大家详细介绍下它的用法。

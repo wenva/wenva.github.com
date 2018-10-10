@@ -3,7 +3,7 @@ layout: post
 title: "linphone-iphone最新源码编译"
 date: 2016-03-09
 comments: false
-categories: VOIP
+categories: 音视频
 ---
 
 最近在解决音视频对讲的问题，发现原先那版linphone sdk存在比较多的问题，比如内存泄露、信令错乱、crash等等，通过github了解到，linphone sdk一直都在更新，于是想更新下linphone sdk. 

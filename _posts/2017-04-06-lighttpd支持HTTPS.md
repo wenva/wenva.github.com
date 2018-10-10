@@ -3,7 +3,7 @@ layout: post
 title: "lighttpd支持HTTPS"
 date: 2017-04-06
 comments: false
-categories: BACK-END
+categories: 后端
 ---
 
 随着Apple、Google大力推广HTTPS，HTTPS将成为今后网站的主流，而前段时间正好看到[Let’s Encrypt](https://letsencrypt.org/)可以生成免费的SSL证书。因此尝试配置了下lighttpd，发现非常容易，大体步骤如下:

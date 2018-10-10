@@ -3,7 +3,7 @@ layout: post
 title: "awesome-raspberrypi"
 date: 2015-06-25
 comments: false
-categories: PI
+categories: 树莓派
 ---
 
 本文将记录我在树莓派开发过程中遇到的一些难点.

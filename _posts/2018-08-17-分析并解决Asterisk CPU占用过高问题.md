@@ -3,7 +3,7 @@ layout: post
 title: "分析并解决Asterisk CPU占用过高问题"
 date: 2018-08-17
 comments: false
-categories: SIP
+categories: 音视频
 ---
 
 现象：近来，发现Asterisk SIP服务经常占用CPU 100%以上，而且都在服务启动1个小时后出现，但重启服务后就恢复正常

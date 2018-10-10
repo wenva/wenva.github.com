@@ -3,7 +3,7 @@ layout: post
 title: "Asterisk 技术点"
 date: 2014-11-07
 comments: false
-categories: VOIP
+categories: 音视频
 ---
 Asterisk 是一个开放源代码的软件VoIP PBX系统，它是一个运行在Linux环境下的纯软件实施方案。这里我将记录在编译和使用Asterisk遇到的问题和解决思路.
 
