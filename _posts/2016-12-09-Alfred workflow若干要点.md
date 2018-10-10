@@ -3,7 +3,7 @@ layout: post
 title: "Alfred workflow若干要点"
 date: 2016-12-09
 comments: false
-categories: APPLE
+categories: 工具
 ---
 
 Alfred workflow真是个神器，自从上手后，就割舍不掉，目前很多原来繁琐的动作都可以通过简单的方式进行，虽然网上已经有很多别人写好的workflow，但总是不够用，毕竟各自的偷懒点不同，因此就必须会workflow的编写，本文将为大家介绍最为常用的技巧.
