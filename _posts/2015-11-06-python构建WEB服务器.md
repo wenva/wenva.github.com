@@ -3,7 +3,7 @@ layout: post
 title: "python构建WEB服务器"
 date: 2015-11-06
 comments: false
-categories: PYTHON
+categories: 后端
 ---
 本文将利用web.py来快速构建一个WEB服务器，看下面
 test.py

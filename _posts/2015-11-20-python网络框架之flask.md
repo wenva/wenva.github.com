@@ -3,7 +3,7 @@ layout: post
 title: "python网络框架之flask"
 date: 2015-11-20
 comments: false
-categories: PYTHON
+categories: 后端
 ---
 
 常听起有些网站后台是用python来构建的（如豆瓣君），于是teyi去了解下，python的web框架还真不少（python社区果然强大），有django、Tornado、Bottle、flask、web.py等等，在前面『[python构建WEB服务器](python构建WEB服务器.html)』介绍过用web.py来构建网站，当时看起来非常简单，今天我们来介绍另一个框架flask.
