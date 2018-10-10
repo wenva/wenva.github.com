@@ -3,7 +3,7 @@ layout: post
 title: "创建自己的CocoaPods私有仓库"
 date: 2015-07-08
 comments: false
-categories: GIT
+categories: 版本管理
 ---
 引入CocoaPods来管理iOS第三方库有一段时间了，这里说一下体会 "快乐并痛着"，为何说快乐呢，可以方便我们去寻找第三方库，并引入到已有的项目工程中，而且保证了工程结构的清晰；为何又说痛着呢，主要是由于更新第三方库太慢了，目前我们引用的第三方库已将近20个，更新一次耗费了至少得半个小时以上，而且更可恶的是，更新期间无法编译代码；总的来说，还是痛多些，现在都不敢更新，于是Google下，发现[CocoaPods支持私有仓库](https://guides.cocoapods.org/making/private-cocoapods.html). 这里简单描述我的经过.
 
