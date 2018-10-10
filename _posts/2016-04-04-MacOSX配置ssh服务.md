@@ -3,7 +3,7 @@ layout: post
 title: "MacOSX配置ssh服务"
 date: 2016-04-04
 comments: false
-categories: APPLE
+categories: 运维
 ---
 
 最近想用公司的一台闲置的Mac-Mini搭建一个服务器，而Mac-Mini没有显示器，因此想通过ssh来登录并进行操作，本文将讲述MacOSX系统如何配置ssh服务.
