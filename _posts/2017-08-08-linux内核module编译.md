@@ -3,7 +3,7 @@ layout: post
 title: "linux内核module编译"
 date: 2017-08-08
 comments: false
-categories: linux
+categories: 后端
 ---
 
 最近公司服务器系统升级至 centos7，升级后发现原先的 bios 升级工具无法使用，提示:

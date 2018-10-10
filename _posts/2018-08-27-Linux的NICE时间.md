@@ -3,7 +3,7 @@ layout: post
 title: "Linux的NICE时间"
 date: 2018-08-27
 comments: false
-categories: linux
+categories: 运维
 ---
 
 使用top命令时，会显示一个ni值，一直没留意，今特地研究了下：NICE表示进程的友好值，从-20到19，值越高，进程优先级越低（越友好，越不会抢占CPU）；NICE TIME是指NICE大于0的进程所占用CPU时间百分比

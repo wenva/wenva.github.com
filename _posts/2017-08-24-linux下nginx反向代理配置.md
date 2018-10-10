@@ -3,7 +3,7 @@ layout: post
 title: "linux下nginx反向代理配置"
 date: 2017-08-24
 comments: false
-categories: linux
+categories: 运维
 ---
 
 关于反向代理服务器，大家应该都有耳闻，形象地说就是增设的"前台"，所有访问都通过这个前台，不能直接访问内部服务器，从而实现了隐藏. 通过反向代理可以实现重定向、负载均衡等.
