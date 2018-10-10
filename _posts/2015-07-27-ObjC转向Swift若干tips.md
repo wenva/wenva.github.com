@@ -3,7 +3,7 @@ layout: post
 title: "ObjC转向Swift若干tips"
 date: 2015-07-27
 comments: false
-categories: OBJC
+categories: IOS
 ---
 * 不分头文件和实现文件，而是集合到.swift文件
 * 类型对象化（类似于java） Int、Float、Double、Bool、Character
