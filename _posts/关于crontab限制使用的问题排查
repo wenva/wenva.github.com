@@ -1,0 +1,60 @@
+---
+layout: post
+title: "��于crontab限制使用的问题排查"
+date: 2022-03-21
+comments: false
+categories: 运维
+---
+
+近期在做数据自动备份用到了crontab，在使用时报了"You (xxx) are not allowed to use this program (crontab)"错误，这里总结了一些排查思路
+
+
+* 第一步: 查看说明手册
+
+通过`man crontab`可以得到如下说明
+
+```
+Running cron jobs can be allowed or disallowed for different users.  For this purpose, use the cron.allow and cron.deny files.  If the cron.allow file exists, a user must be listed in  it  to
+be allowed to use cron If the cron.allow file does not exist but the cron.deny file does exist, then a user must not be listed in the cron.deny file in order to use cron.  If neither of these
+files exists, only the super user is allowed to use cron.  Another way to restrict access to cron is to use PAM authentication in /etc/security/access.conf to set up users, which are  allowed
+or disallowed to use crontab or modify system cron jobs in the /etc/cron.d/ directory.
+```
+从以上说明，可以执行，如果存在/etc/cron.allow，则登录账号必须在这个文件中，如果/etc/cron.allow文件不存在，则你的账号不能出现在这个地方
+
+经过以上可以解决大部分问题，但在我的例子中，还是无法解决，尝试创建了/etc/cron.allow，并添加了测试账号，但提示
+
+```
+/var/spool/cron/xxx: Permission denied
+```
+
+于是进行第二步排查
+
+* 第二步：关于文件权限
+
+经过搜索和比对，发现/usr/bin/crontab权限不对
+
+```
+[nexhome@iZ94l8ny5dlZ ~]$ stat /usr/bin/crontab
+  File: `/usr/bin/crontab'
+  Size: 51784     	Blocks: 104        IO Block: 4096   regular file
+Device: ca01h/51713d	Inode: 1058360     Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+```
+而正常的权限如下
+
+```
+[nexhome@iZ94l8ny5dlZ ~]$ stat /usr/bin/crontab
+  File: `/usr/bin/crontab'
+  Size: 51784     	Blocks: 104        IO Block: 4096   regular file
+Device: ca01h/51713d	Inode: 1058360     Links: 1
+Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+```
+
+于是使用chmod修改了下/usr/bin/crontab发现正常了
+
+```
+chmod 4755 /usr/bin/crontab
+```
+
+这里对其中了原理查了下，原来在unix(linux)系统下，文件执行所需权限是依赖于euid、egid（而不是直接依赖于uid、gid，相当于做了解耦），在没有设置SUID时，这2个值等同于当前执行账号的uid和gid，
+而当设置了SUID时，euid、egid等同于文件所有者对应账号的uid和gid，这样相当于进行了提权操作。在系统中存在passwd、ping等很多命令都采用了类似特性。
