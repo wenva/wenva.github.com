@@ -25,7 +25,7 @@ categories: 自动化测试
 
 整个流程如下：
 
-*（1）测试开始前，系统会将数据库metersphere/api_test_environment表config自动中的variables及系统一些参数载入到vars变量中
+*（1）测试开始前，系统会将数据库metersphere/api_test_environment表config字段中的variables及系统一些参数载入到vars变量中
 
 ```
 {
@@ -46,13 +46,13 @@ categories: 自动化测试
 ```
 {
     "key": "value1"
-    ${__metersphere_env_id}+key: "valu2"
+    ${__metersphere_env_id}+key: "value2"
 }
 ```
 
-这里就解释了文章开头提到的2个问题
+这里就解释了文章开头提到的前2个问题
 
-* (4) 脚本结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃
+* (4) 测试结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃
 
 
 ##### 实际调试
