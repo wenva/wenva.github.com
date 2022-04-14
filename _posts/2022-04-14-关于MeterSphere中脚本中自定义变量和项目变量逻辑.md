@@ -52,8 +52,7 @@ categories: 自动化测试
 
 这里就解释了文章开头提到的前2个问题
 
-* (4) 测试结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃
-
+* (4) 测试结束后，系统会把${__metersphere_env_id}开头的键，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃
 
 ##### 实际调试
 
