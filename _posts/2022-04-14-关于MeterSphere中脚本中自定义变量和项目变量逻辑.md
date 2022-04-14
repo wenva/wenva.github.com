@@ -19,13 +19,13 @@ categories: 运维
 ##### 生命周期
 
 * 自定义变量生命周期仅在本次接口测试中，包括了前置脚本、后置脚本
-* 项目环境变量生命周期跟随项目对应的环境的周期，即只有删除了环境，才会删除
+* 项目环境变量生命周期跟随项目对应的环境的周期，即只有删除了环境，变量才会删除
 
 ##### 处理流程
 
 整个流程如下：
 
-*（1）系统调用脚本前，将数据库metersphere/api_test_environment表config自动中的variables及系统一个参数载入到vars变量中
+*（1）测试开始前，系统会将数据库metersphere/api_test_environment表config自动中的variables及系统一些参数载入到vars变量中
 
 ```
 {
