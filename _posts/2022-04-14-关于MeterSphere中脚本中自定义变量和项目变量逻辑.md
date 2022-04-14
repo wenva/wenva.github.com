@@ -19,7 +19,7 @@ categories: 运维
 
 整个流程如下：
 
-*（1）系统调用脚本前，将项目环境变量载入到vars变量中，会自动去除${__metersphere_env_id}前缀
+*（1）系统调用脚本前，将数据库metersphere/api_test_environment表config自动中的variables及系统一个参数载入到vars变量中
 
 ```
 {
@@ -46,7 +46,7 @@ categories: 运维
 
 这里就解释了文章开头提到的2个问题
 
-* (4) 脚本结束后，系统会把${__metersphere_env_id}开头的key，存储下，其他值则丢弃，因此自定义变量生命周期只在本脚本内
+* (4) 脚本结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃，因此自定义变量生命周期只在本脚本内
 
 ##### 实际调试
 
