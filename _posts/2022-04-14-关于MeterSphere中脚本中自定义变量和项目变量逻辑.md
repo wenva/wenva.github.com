@@ -3,7 +3,7 @@ layout: post
 title: "关于MeterSphere中脚本中自定义变量和项目环境变量逻辑"
 date: 2022-04-14
 comments: false
-categories: 运维
+categories: 自动化测试
 ---
 
 近期在使用MeterSphere前置/后置脚本时候，对于项目环境变量有比较大的困惑：
