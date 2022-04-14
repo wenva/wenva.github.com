@@ -11,6 +11,7 @@ categories: 运维
 ```
 （1）为什么需要同时调用2次put，`vars.put(${__metersphere_env_id}+"key","value");vars.put("key","value")`
 （2）单独设置`vars.put(${__metersphere_env_id}+"key","value")`，为什么取不到值
+（3）自定义变量和项目变量的声明周期是怎样
 ```
 
 于是今天对其整个过程进行了猜想，并通过实际debug，得出了结论，现分享如下
@@ -46,7 +47,8 @@ categories: 运维
 
 这里就解释了文章开头提到的2个问题
 
-* (4) 脚本结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃，因此自定义变量生命周期只在本脚本内
+* (4) 脚本结束后，系统会把${__metersphere_env_id}开头的key，去除${__metersphere_env_id}并存储到metersphere/api_test_environment的config字段，其他值则丢弃
+
 
 ##### 实际调试
 
@@ -99,4 +101,27 @@ printVars();
 ...
 2022-04-14 10:28:12 INFO ThreadGroup 1-1 key: value1
 ...
+```
+
+数据库中metersphere/api_test_environment表config字段
+
+```
+{
+  ...
+  "commonConfig": {
+    "variables": [
+      {
+        "enable": true,
+        "name": "key",
+        "value": "value2"
+      }
+      ...
+    ],
+    "hosts": [],
+    "enableHost": false,
+    "requestTimeout": 60000,
+    "responseTimeout": 60000
+  }
+  ...
+}
 ```
