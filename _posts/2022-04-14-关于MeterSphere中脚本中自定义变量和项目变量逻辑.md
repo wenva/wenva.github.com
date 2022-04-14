@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "关于MeterSphere中脚本中自定义变量和项目变量逻辑"
+title: "关于MeterSphere中脚本中自定义变量和项目环境变量逻辑"
 date: 2022-04-14
 comments: false
 categories: 运维
 ---
 
-近期在使用MeterSphere前置/后置脚本时候，对于项目变量有比较大的困惑：
+近期在使用MeterSphere前置/后置脚本时候，对于项目环境变量有比较大的困惑：
 
 ```
 （1）为什么需要同时调用2次put，`vars.put(${__metersphere_env_id}+"key","value");vars.put("key","value")`
@@ -17,6 +17,9 @@ categories: 运维
 于是今天对其整个过程进行了猜想，并通过实际debug，得出了结论，现分享如下
 
 ##### 生命周期
+
+* 自定义变量生命周期仅在本次接口测试中，包括了前置脚本、后置脚本
+* 项目环境变量生命周期跟随项目对应的环境的周期，即只有删除了环境，才会删除
 
 ##### 处理流程
 
